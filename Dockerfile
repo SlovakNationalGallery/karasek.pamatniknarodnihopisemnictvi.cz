@@ -1,6 +1,6 @@
 FROM php:7.4-fpm
 
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_15.x | bash - && \
     apt-get update -y && \
     apt-get install -y \
         libzip-dev \
