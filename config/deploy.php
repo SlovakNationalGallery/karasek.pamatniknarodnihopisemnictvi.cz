@@ -121,7 +121,7 @@ return [
     */
 
     'hosts' => [
-        'karasek.pamatniknarodnihopisemnictvi.cz' => [
+        'webumenia.sk' => [
             'deploy_path' => '/var/www/karasek.pamatniknarodnihopisemnictvi.cz',
             'user' => 'lab_sng',
             'branch' => 'master',
