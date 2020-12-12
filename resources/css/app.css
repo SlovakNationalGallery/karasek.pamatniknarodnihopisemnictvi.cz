@@ -30,7 +30,7 @@
     }
 
     h1 {
-        @apply bg-white border-2 md:border-4 border-black font-display leading-none md:leading-none px-8 py-4 text-6xl md:text-8xl text-center;
+        @apply bg-white border-2 md:border-4 border-black font-display leading-none md:leading-none pb-8 pt-6 px-8 text-6xl md:text-8xl text-center;
     }
 
     h2 {

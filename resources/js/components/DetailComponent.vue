@@ -11,7 +11,7 @@
 
                 <div class="bottom-8 fixed font-medium text-center underline uppercase">
                     <a href="#">Nahoru</a><br>
-                    <a href="#">Menu</a>
+                    <a href="{{ route('homepage') }}">Menu</a>
                 </div>
             </div>
 
