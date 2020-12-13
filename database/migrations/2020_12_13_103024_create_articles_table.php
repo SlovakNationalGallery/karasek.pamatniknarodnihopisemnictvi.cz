@@ -17,7 +17,7 @@ class CreateArticlesTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug')->unique()->default('');
-            $table->text('perex');
+            $table->text('perex')->nullable();
             $table->text('content');
             $table->string('category')->nullable();
             $table->foreignId('parent_id')->nullable()->constrained('articles')->nullOnDelete();
