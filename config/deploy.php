@@ -104,7 +104,6 @@ return [
         'php_fpm_service' => 'php7.4-fpm',
         'shared_dirs' => [
             'resources/fonts',
-            'node_modules',
             'storage'
         ]
     ],
