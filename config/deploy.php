@@ -103,6 +103,7 @@ return [
         'bin/composer' => 'php7.4 $(which composer)',
         'php_fpm_service' => 'php7.4-fpm',
         'shared_dirs' => [
+            'public/packages',
             'resources/fonts',
             'storage'
         ]
