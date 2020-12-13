@@ -41,7 +41,7 @@ class ArticleCrudController extends CrudController
     {
         CRUD::column('title');
         CRUD::column('category');
-        CRUD::column('parent_id');
+        CRUD::column('parent');
         CRUD::column('created_at');
         CRUD::column('updated_at');
 
