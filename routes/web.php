@@ -24,3 +24,11 @@ Route::get('about', function () {
 Route::get('detail', function () {
     return view('detail');
 });
+
+Route::get('article/{article:slug}', function (\App\Models\Article $article) {
+    if ($article->parent) {
+        abort(404);
+    }
+
+    return view('article', compact('article'));
+})->name('article');
