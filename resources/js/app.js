@@ -3,6 +3,7 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 Vue.component('catalog-component', require('./components/CatalogComponent.vue').default);
+Vue.component('detail-component', require('./components/DetailComponent.vue').default);
 
 const common = {
     install: vue => {

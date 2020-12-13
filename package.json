@@ -21,6 +21,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "isotope-layout": "^3.0.6"
+        "isotope-layout": "^3.0.6",
+        "vue": "^2.6.12"
     }
 }
