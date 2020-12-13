@@ -229,4 +229,5 @@ return [
 
     ],
 
+    'gallery' => env('APP_GALLERY', 'Památník národního písemnictví, PNP'),
 ];
