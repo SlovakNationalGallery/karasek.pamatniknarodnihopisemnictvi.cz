@@ -15,7 +15,8 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
-        "lorisleiva/laravel-deployer": "^0.3.5"
+        "lorisleiva/laravel-deployer": "^0.3.5",
+        "spatie/laravel-sluggable": "^2.6"
     },
     "require-dev": {
         "backpack/generators": "^3.1",
