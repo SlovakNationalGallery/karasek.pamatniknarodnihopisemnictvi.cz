@@ -1,3 +1,4 @@
+/data
 /node_modules
 /resources/fonts
 /public/hot
@@ -5,6 +6,8 @@
 /public/css
 /public/fonts
 /public/js
+/public/packages
+/storage/*.json
 /storage/*.key
 /vendor
 .env
