@@ -40,9 +40,6 @@ class ArticleCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::column('title');
-        CRUD::column('slug');
-        CRUD::column('perex');
-        CRUD::column('content');
         CRUD::column('category');
         CRUD::column('parent_id');
         CRUD::column('created_at');
@@ -66,9 +63,8 @@ class ArticleCrudController extends CrudController
         CRUD::setValidation(ArticleRequest::class);
 
         CRUD::field('title');
-        CRUD::field('slug');
         CRUD::field('perex');
-        CRUD::field('content');
+        CRUD::field('content')->type('ckeditor');
         CRUD::field('category');
         CRUD::field('parent_id');
 
