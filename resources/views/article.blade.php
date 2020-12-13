@@ -32,7 +32,7 @@
                     {!! $child->content !!}
                 </p>
 
-                <!-- gallery -->
+                <catalog-component category="{{ $child->category }}"></catalog-component>
             </div>
         @endforeach
 

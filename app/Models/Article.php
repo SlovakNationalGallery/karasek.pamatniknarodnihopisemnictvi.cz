@@ -48,4 +48,9 @@ class Article extends Model
     {
         return 'slug';
     }
+
+    public function getCategoryAttribute($value)
+    {
+        return $value ?? $this->title;
+    }
 }
