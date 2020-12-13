@@ -26,6 +26,11 @@ class Article extends Model
         return $this->belongsTo(self::class);
     }
 
+    public function children()
+    {
+        return $this->hasMany(self::class, 'parent_id');
+    }
+
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
