@@ -21,8 +21,8 @@ Route::get('about', function () {
     return view('about');
 });
 
-Route::get('detail', function () {
-    return view('detail');
+Route::get('detail/{id}', function ($id) {
+    return view('detail', compact('id'));
 });
 
 Route::get('article/{article:slug}', function (\App\Models\Article $article) {
