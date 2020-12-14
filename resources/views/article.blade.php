@@ -31,9 +31,9 @@
                 <p class="my-8">
                     {!! $child->content !!}
                 </p>
-
-                <catalog-component category="{{ $child->category }}"></catalog-component>
             </div>
+
+            <catalog-component category="{{ $child->category }}"></catalog-component>
         @endforeach
 
         <div class="absolute left-full">
