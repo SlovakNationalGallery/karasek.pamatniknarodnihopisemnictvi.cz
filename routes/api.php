@@ -21,7 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('items/{id}', function (Request $request, $id) {
     $items = Item::idsSearch()
-        ->values([$id])
+        ->values([(string)$id])
         ->postFilter('term', ['gallery' => config('app.gallery')])
         ->execute();
 
@@ -33,9 +33,10 @@ Route::get('items/{id}', function (Request $request, $id) {
 });
 
 Route::get('items', function (Request $request) {
-    $sort = $request->get('sort', 'additionals.order');
-    $perPage = $request->get('size', 1);
-    $category = $request->get('category');
+    $sort = (array)$request->get('sort');
+    $perPage = (int)$request->get('size', 1);
+    $category = (string)$request->get('category');
+    $order = (array)$request->get('order');
 
     if (!$category) {
         abort(404);
@@ -45,8 +46,27 @@ Route::get('items', function (Request $request) {
         ->filter('term', ['gallery' => config('app.gallery')])
         ->filter('term', ['additionals.category.keyword' => $category]);
 
-    if ($sort !== null) {
-        $builder->sort($sort);
+    $range = [];
+    if (isset($order['lt'])) {
+        $range['lt'] = (int)$order['lt'];
+    }
+    if (isset($order['gt'])) {
+        $range['gt'] = (int)$order['gt'];
+    }
+    if ($range) {
+        $builder->filter('range', ['additionals.order' => $range]);
+    }
+
+    if (!$sort) {
+        $sort['additionals.order'] = 'asc';
+    }
+    $sortFields = ['additionals.order'];
+    $directions = ['asc', 'dec'];
+    foreach ($sort as $field => $direction) {
+        if (in_array($field, $sortFields) &&
+            in_array($direction, $directions)) {
+            $builder->sort($field, $direction);
+        }
     }
 
     $items = $builder->paginate($perPage);
