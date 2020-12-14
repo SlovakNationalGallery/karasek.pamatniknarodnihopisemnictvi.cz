@@ -2,7 +2,6 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 window.Isotope = require('isotope-layout');
-window.imagesLoaded = require('imagesloaded');
 
 Vue.component('catalog-component', require('./components/CatalogComponent.vue').default);
 Vue.component('detail-component', require('./components/DetailComponent.vue').default);
