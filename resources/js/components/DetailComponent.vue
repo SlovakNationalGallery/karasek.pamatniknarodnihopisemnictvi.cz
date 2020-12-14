@@ -3,11 +3,11 @@
         <div class="lg:flex lg:-mx-8 -my-8 lg:my-0 relative">
 
             <div class="absolute right-full">
-                <a class="fixed text-6xl top-1/2 transform -translate-x-full -translate-y-1/2" href="#">&larr;</a>
+                <a class="fixed text-6xl top-1/2 transform -translate-x-full -translate-y-1/2" :href="previous" v-if="previous">&larr;</a>
             </div>
 
             <div class="absolute left-full">
-                <a class="fixed text-6xl top-1/2 transform -translate-y-1/2" href="#">&rarr;</a>
+                <a class="fixed text-6xl top-1/2 transform -translate-y-1/2" :href="next" v-if="next">&rarr;</a>
 
                 <div class="bottom-8 fixed font-medium text-center underline uppercase">
                     <a href="#">Nahoru</a><br>
@@ -16,7 +16,9 @@
             </div>
 
             <div class="my-8 lg:my-0 lg:mx-8 lg:w-1/2">
-                <img class="mx-auto" :src="getImage(item, 800)">
+                <a :href="getZoomUrl(item)">
+                    <img class="mx-auto" :src="getImage(item, 800)">
+                </a>
             </div>
             <div class="my-8 lg:my-0 lg:w-1/2 lg:mx-8">
                 <hr class="border-t-0.5 border-black">
@@ -70,23 +72,41 @@ export default {
     data() {
         return {
             item: null,
-            endpoint: '/api/items/',
+            previous: null,
+            next: null,
         };
     },
 
     props: ['id'],
 
     created() {
-        this.fetch();
-    },
+        this.fetchItem(this.id)
+            .then(({data}) => {
+                this.item = data;
+                const order = this.item.document.content.additionals.order;
+                const params = new URLSearchParams();
+                params.append('category', this.item.document.content.additionals.category);
 
-    methods: {
-        fetch() {
-            axios.get(`${this.endpoint}${this.id}`)
-                .then(({data}) => {
-                    this.item = data;
-                });
-        },
+                const prevParams = new URLSearchParams(params);
+                prevParams.append('order[lt]', order);
+                prevParams.append('sort[additionals.order]', 'desc');
+                this.fetchItems(prevParams)
+                    .then(({data}) => {
+                        if (data.data[0]) {
+                            this.previous = this.getDetailUrl(data.data[0]);
+                        }
+                    });
+
+                const nextParams = new URLSearchParams(params);
+                nextParams.append('order[gt]', order);
+                nextParams.append('sort[additionals.order]', 'asc');
+                this.fetchItems(nextParams)
+                    .then(({data}) => {
+                        if (data.data[0]) {
+                            this.next = this.getDetailUrl(data.data[0]);
+                        }
+                    });
+            });
     }
 }
 </script>
