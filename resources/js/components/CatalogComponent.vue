@@ -6,7 +6,7 @@
                     <img :src="getImage(item, 800)" class="absolute left-0 top-0">
                 </a>
                 <p class="mt-4"><a :href="getDetailUrl(item)">{{ item.document.content.title }}</a></p>
-                <p class="font-medium mt-2"><a :href="getDetailUrl(item)">{{ item.document.content.author[0] }}</a></p>
+                <p class="font-medium mt-2"><a :href="getDetailUrl(item)">{{ getAuthor(item) }}</a></p>
                 <p class="mt-2"><a :href="getDetailUrl(item)">{{ item.document.content.dating }}</a></p>
             </div>
         </isotope>

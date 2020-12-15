@@ -27,7 +27,13 @@ const common = {
         };
         vue.prototype.fetchItem = id => {
             return axios.get(`${endpoint}/${id}`);
-        }
+        };
+        vue.prototype.formatName = name => {
+            return name.replace(/^([^,]*),\s*(.*)$/, '$2 $1');
+        };
+        vue.prototype.getAuthor = item => {
+            return vue.prototype.formatName(item.document.content.author[0]);
+        };
     }
 }
 
