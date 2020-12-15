@@ -8,7 +8,7 @@
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="antialiased font-serif leading-relaxed p-5 lg:p-10 text-lg {{ $bodyClasses ?? '' }} {{ !empty($fullHeight) ? 'min-h-full' : '' }}">
+<body class="antialiased font-serif leading-relaxed p-5 lg:p-10 text-lg tracking-wider {{ $bodyClasses ?? '' }} {{ !empty($fullHeight) ? 'min-h-full' : '' }}">
     <div id="app" class="{{ !empty($fullHeight) ? 'min-h-full' : '' }}">
         @yield('content')
     </div>

@@ -5,7 +5,7 @@
         <h1>O výstavě</h1>
 
         <div class="max-w-4xl mx-auto">
-            <p class="font-medium my-8 text-center text-xl">
+            <p class="font-medium my-8 text-center text-2xl">
                 Výstava Virtuální galerie Jiřího Karáska vznikla u příležitosti dvou kulatých výročí, která si v souvislosti
                 s tímto významným českým básníkem připomeneme v roce 2021. V lednu uplyne 150 let od Karáskova narození
                 a v březnu 70 let od jeho úmrtí.
@@ -27,9 +27,9 @@
                 Tyršově domě na pražské Malé Straně.
             </p>
 
-            <figure class="my-8">
+            <figure class="my-12">
                 <img src="https://via.placeholder.com/1280x720">
-                <figcaption class="font-medium my-4 text-center">William Hogarth, Pět typů paruk, 1761</figcaption>
+                <figcaption class="font-medium my-8 text-center">WILLIAM HOGARTH, Pět typů paruk, 1761</figcaption>
             </figure>
 
             <h2>O výstavě</h2>

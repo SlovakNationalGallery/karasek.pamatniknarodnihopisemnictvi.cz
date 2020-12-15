@@ -1,5 +1,5 @@
 <template>
-    <div class="-mx-6" v-if="items.length">
+    <div class="mb-28 -mt-6 -mx-6" v-if="items.length">
         <isotope :options="getOptions()" :list="items">
             <div v-for="item in items" :key="item.document.id" class="my-6 px-6 w-1/2 lg:w-1/3 leading-tight" data-grid-item>
                 <a :href="getDetailUrl(item)" class="relative block" :style="getStyle(item)">
@@ -11,7 +11,7 @@
             </div>
         </isotope>
 
-        <div class="text-center mb-32" v-if="hasMore">
+        <div class="text-center" v-if="hasMore">
             <button class="active:bg-gray-100 hover:bg-gray-100 border-black border-0.5 font-medium px-4 py-3" v-on:click.once="loadAll()">Všechna díla</button>
         </div>
     </div>
