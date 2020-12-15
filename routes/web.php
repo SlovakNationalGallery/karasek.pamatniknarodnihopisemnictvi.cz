@@ -18,6 +18,10 @@ Route::get('', function () {
     return view('homepage', compact('articles'));
 })->name('homepage');
 
+Route::get('o-vystave', function () {
+    return view('about');
+})->name('about');
+
 Route::get('{article:slug}', function (\App\Models\Article $article) {
     return view('article', compact('article'));
 })->name('article');

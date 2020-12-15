@@ -4,9 +4,9 @@
     <div class="max-w-6xl mx-auto relative">
         <h1>{{ $article->title }}</h1>
 
-        <div class="font-medium my-8 text-center underline uppercase">
+        <div class="font-medium my-8 text-center uppercase">
             @foreach($article->collections as $collection)
-                <a href="#{{ $collection->slug }}">{{ $collection->title }}</a>
+                <a class="mx-2 underline" href="#{{ $collection->slug }}">{{ $collection->title }}</a>
             @endforeach
         </div>
 
