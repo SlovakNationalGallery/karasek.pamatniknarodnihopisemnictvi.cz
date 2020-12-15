@@ -24,7 +24,7 @@
                 <hr class="border-t-0.5 border-black">
 
                 <h2 class="my-3 leading-tight text-2xl no-underline">
-                    {{ item.document.content.author[0] }}
+                    {{ getAuthor(item) }}
                     ({{ item.document.content.additionals.author_birth_year }}—{{ item.document.content.additionals.author_death_year}})</h2>
 
                 <hr class="border-t-0.5 border-black">
