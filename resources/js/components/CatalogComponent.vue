@@ -1,13 +1,24 @@
 <template>
     <div class="mb-14 lg:mb-28 -mt-6 -mx-6" v-if="items.length">
         <isotope :options="getOptions()" :list="items">
-            <div v-for="item in items" :key="item.document.id" class="my-6 px-6 w-1/2 lg:w-1/3 leading-tight" data-grid-item>
+            <div v-for="item in items" :key="item.document.id" class="my-6 px-6 w-1/2 lg:w-1/3 leading-tight lg:leading-tight text-sm lg:text-base" data-grid-item>
                 <a :href="getDetailUrl(item)" class="relative block" :style="getStyle(item)">
                     <img :src="getImage(item, 800)" class="absolute left-0 top-0">
                 </a>
-                <p class="mt-4"><a :href="getDetailUrl(item)">{{ item.document.content.title }}</a></p>
-                <p class="font-medium mt-2"><a :href="getDetailUrl(item)">{{ getAuthor(item) }}</a></p>
-                <p class="mt-2"><a :href="getDetailUrl(item)">{{ item.document.content.dating }}</a></p>
+
+                <div class="flex mt-4 justify-between">
+                    <div>
+                        <p class="my-1"><a :href="getDetailUrl(item)">{{ item.document.content.title }}</a></p>
+                        <p class="my-1 font-medium"><a :href="getDetailUrl(item)">{{ getAuthor(item) }}</a></p>
+                        <p class="mt-1"><a :href="getDetailUrl(item)">{{ item.document.content.dating }}</a></p>
+                    </div>
+
+                    <div class="pl-5">
+                        <a :href="getZoomUrl(item)" class="opacity-50 hover:opacity-100">
+                            <i class="fa fa-search-plus text-xl"><span class="sr-only">Zoom</span></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </isotope>
 

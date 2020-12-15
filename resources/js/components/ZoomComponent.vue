@@ -2,7 +2,7 @@
     <div>
         <div id="viewer" class="absolute h-full left-0 m-0 min-h-full p-0 top-0 w-full"></div>
 
-        <a class="absolute bg-white border-black border-0.5 font-medium left-0 m-8 opacity-60 active:opacity-100 hover:opacity-100 px-4 py-3 top-0 z-50" :href="backUrl" role="button">&larr; Zpět</a>
+        <a class="absolute bg-white border-black border-0.5 font-medium left-0 m-8 opacity-60 active:opacity-100 hover:opacity-100 px-4 py-3 top-0 z-50" :href="backUrl" role="button" data-return>&larr; Zpět</a>
     </div>
 </template>
 
@@ -59,9 +59,9 @@ export default {
                 return true;
             });
 
-            $('a.return').click(() => {
+            $('[data-return]').click(() => {
                 if (document.referrer.split('/')[2] === window.location.host) {
-                    parent.history.back();
+                    window.history.back();
 
                     // fallback when opening in new tab/window and history.back() is disabled but referrer is defined
                     setTimeout(() => {
