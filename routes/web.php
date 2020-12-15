@@ -13,13 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('about', function () {
-    return view('about');
-});
+Route::get('', function () {
+    $articles = \App\Models\Article::orderBy('lft')->get();
+    return view('homepage', compact('articles'));
+})->name('homepage');
 
 Route::get('{article:slug}', function (\App\Models\Article $article) {
     return view('article', compact('article'));
