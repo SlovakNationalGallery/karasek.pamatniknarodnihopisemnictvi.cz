@@ -64,7 +64,7 @@ class CollectionCrudController extends CrudController
         CRUD::setValidation(CollectionRequest::class);
 
         CRUD::field('title');
-        CRUD::field('content');
+        CRUD::field('content')->type('ckeditor');
         CRUD::field('category');
         CRUD::field('article_id');
 

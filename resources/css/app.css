@@ -34,6 +34,6 @@
     }
 
     h2 {
-        @apply font-medium my-8 text-center underline uppercase;
+        @apply font-medium my-10 text-center underline uppercase;
     }
 }

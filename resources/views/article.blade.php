@@ -24,10 +24,6 @@
             <h2 id="{{ $collection->slug }}">{{ $collection->title }}</h2>
 
             <div class="max-w-4xl mx-auto">
-                <p class="font-medium my-8 text-center text-xl">
-                    {{ $collection->perex }}
-                </p>
-
                 <p class="my-8">
                     {!! $collection->content !!}
                 </p>
