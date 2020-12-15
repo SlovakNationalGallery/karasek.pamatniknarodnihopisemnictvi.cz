@@ -22,7 +22,7 @@ class Article extends Model
 
     public function collections()
     {
-        return $this->hasMany(Collection::class);
+        return $this->hasMany(Collection::class)->orderBy('lft');
     }
 
     public function getSlugOptions(): SlugOptions

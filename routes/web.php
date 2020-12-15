@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('', function () {
-    $articles = \App\Models\Article::all();
+    $articles = \App\Models\Article::orderBy('lft')->get();
     return view('homepage', compact('articles'));
 })->name('homepage');
 
