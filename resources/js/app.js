@@ -10,7 +10,8 @@ Vue.component('zoom-component', require('./components/ZoomComponent').default);
 
 const common = {
     install: vue => {
-        const endpoint = '/api/items';
+        const endpointItems = '/api/items';
+        const endpointCollections = '/api/collections';
         vue.prototype.getImage = (item, size) => {
             return `${process.env.MIX_WEBUMENIA_URL}/dielo/nahlad/${item.document.id}/${size}`;
         };
@@ -20,13 +21,21 @@ const common = {
         vue.prototype.getZoomUrl = item => {
             return `/zoom/${item.document.id}`;
         };
+        vue.prototype.getCollectionUrl = collection => {
+            return `/${collection.article.slug}#${collection.slug}`;
+        };
         vue.prototype.fetchItems = (params) => {
-            return axios.get(endpoint, {
+            return axios.get(endpointItems, {
                 params: params,
             });
         };
         vue.prototype.fetchItem = id => {
-            return axios.get(`${endpoint}/${id}`);
+            return axios.get(`${endpointItems}/${id}`);
+        };
+        vue.prototype.fetchCollections = (params) => {
+            return axios.get(endpointCollections, {
+                params: params,
+            });
         };
         vue.prototype.formatName = name => {
             return name.replace(/^([^,]*),\s*(.*)$/, '$2 $1');

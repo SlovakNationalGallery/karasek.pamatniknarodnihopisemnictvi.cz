@@ -18,12 +18,9 @@ Route::get('', function () {
     return view('homepage', compact('articles'));
 })->name('homepage');
 
-Route::get('o-vystave', function () {
-    return view('about');
-})->name('about');
-
 Route::get('{article:slug}', function (\App\Models\Article $article) {
-    return view('article', compact('article'));
+    $template = $article->slug === 'o-vystave' ? 'about' : 'article';
+    return view($template, compact('article'));
 })->name('article');
 
 Route::get('detail/{item:id}', function (\App\Models\Item $item) {
