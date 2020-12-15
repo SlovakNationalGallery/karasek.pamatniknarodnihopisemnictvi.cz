@@ -33,8 +33,12 @@ class Collection extends Model
             ->doNotGenerateSlugsOnUpdate();
     }
 
-    public function getCategoryAttribute($value)
+    public function save(array $options = [])
     {
-        return $value ?? $this->title;
+        if ($this->category === null) {
+            $this->category = $this->title;
+        }
+
+        return parent::save($options);
     }
 }

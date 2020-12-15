@@ -1,5 +1,5 @@
 <template>
-    <div class="mb-28 -mt-6 -mx-6" v-if="items.length">
+    <div class="mb-14 lg:mb-28 -mt-6 -mx-6" v-if="items.length">
         <isotope :options="getOptions()" :list="items">
             <div v-for="item in items" :key="item.document.id" class="my-6 px-6 w-1/2 lg:w-1/3 leading-tight" data-grid-item>
                 <a :href="getDetailUrl(item)" class="relative block" :style="getStyle(item)">

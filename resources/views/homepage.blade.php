@@ -9,7 +9,7 @@
         <div class="my-12 relative">
             <ol class="lg:content-between flex flex-col flex-wrap items-center lg:justify-evenly list-decimal list-inside lg:h-168 relative z-10">
                 @foreach($articles as $article)
-                    <li class="bg-white my-8 max-w-sm p-4 relative text-center">
+                    <li class="bg-white my-4 lg:my-8 max-w-sm p-4 relative text-center">
                         <a href="{{ route('article', ['article' => $article]) }}">{{ $article->title }}</a>
                         <a class="absolute inset-0" href="{{ route('article', ['article' => $article]) }}"></a>
                     </li>

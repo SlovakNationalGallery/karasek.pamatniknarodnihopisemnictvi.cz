@@ -10,7 +10,7 @@
                 <a class="fixed text-6xl top-1/2 transform -translate-y-1/2" :href="next" v-if="next">&rarr;</a>
 
                 <div class="bottom-8 fixed font-medium text-center underline uppercase">
-                    <a href="#">Nahoru</a><br>
+                    <a :href="back" v-if="back">Zpět</a><br>
                     <a href="/">Menu</a>
                 </div>
             </div>
@@ -23,9 +23,10 @@
             <div class="my-8 lg:my-0 lg:w-1/2 lg:mx-8">
                 <hr class="border-t-0.5 border-black">
 
-                <h2 class="my-3 leading-tight text-2xl no-underline">
+                <h2 class="leading-tight py-4 text-xl lg:text-2xl">
                     {{ getAuthor(item) }}
-                    ({{ item.document.content.additionals.author_birth_year }}—{{ item.document.content.additionals.author_death_year}})</h2>
+                    <span class="whitespace-nowrap">({{ item.document.content.additionals.author_birth_year }}—{{ item.document.content.additionals.author_death_year}})</span>
+                </h2>
 
                 <hr class="border-t-0.5 border-black">
 
@@ -74,6 +75,7 @@ export default {
             item: null,
             previous: null,
             next: null,
+            back: null,
         };
     },
 
@@ -104,6 +106,13 @@ export default {
                     .then(({data}) => {
                         if (data.data[0]) {
                             this.next = this.getDetailUrl(data.data[0]);
+                        }
+                    });
+
+                this.fetchCollections(params)
+                    .then(({data}) => {
+                        if (data.data[0]) {
+                            this.back = this.getCollectionUrl(data.data[0]);
                         }
                     });
             });

@@ -73,3 +73,17 @@ Route::get('items', function (Request $request) {
 
     return response()->json($items);
 });
+
+Route::get('collections', function (Request $request) {
+    $category = (string)$request->get('category');
+    $perPage = (int)$request->get('size', 1);
+
+    $where = compact([
+        'category',
+    ]);
+    $collections = \App\Models\Collection::with('article')
+        ->where($where)
+        ->paginate($perPage);
+
+    return response()->json($collections);
+});
