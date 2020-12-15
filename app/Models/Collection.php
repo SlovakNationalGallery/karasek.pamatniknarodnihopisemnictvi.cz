@@ -20,6 +20,11 @@ class Collection extends Model
         'content',
     ];
 
+    public function article()
+    {
+        return $this->belongsTo(Article::class);
+    }
+
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
