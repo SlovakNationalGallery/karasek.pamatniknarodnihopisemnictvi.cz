@@ -5,8 +5,8 @@
         <h1>{{ $article->title }}</h1>
 
         <div class="font-medium my-8 text-center underline uppercase">
-            @foreach($article->children as $child)
-                <a href="#{{ $child->slug }}">{{ $child->title }}</a>
+            @foreach($article->collections as $collection)
+                <a href="#{{ $collection->slug }}">{{ $collection->title }}</a>
             @endforeach
         </div>
 
@@ -20,20 +20,20 @@
             </p>
         </div>
 
-        @foreach($article->children as $child)
-            <h2 id="{{ $child->slug }}">{{ $child->title }}</h2>
+        @foreach($article->collections as $collection)
+            <h2 id="{{ $collection->slug }}">{{ $collection->title }}</h2>
 
             <div class="max-w-4xl mx-auto">
                 <p class="font-medium my-8 text-center text-xl">
-                    {{ $child->perex }}
+                    {{ $collection->perex }}
                 </p>
 
                 <p class="my-8">
-                    {!! $child->content !!}
+                    {!! $collection->content !!}
                 </p>
             </div>
 
-            <catalog-component category="{{ $child->category }}"></catalog-component>
+            <catalog-component category="{{ $collection->category }}"></catalog-component>
         @endforeach
 
         <div class="absolute left-full">

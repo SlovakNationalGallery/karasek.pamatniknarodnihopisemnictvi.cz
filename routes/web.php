@@ -22,10 +22,6 @@ Route::get('about', function () {
 });
 
 Route::get('{article:slug}', function (\App\Models\Article $article) {
-    if ($article->parent) {
-        abort(404);
-    }
-
     return view('article', compact('article'));
 })->name('article');
 

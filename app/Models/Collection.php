@@ -9,20 +9,20 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class Article extends Model
+class Collection extends Model
 {
     use CrudTrait, HasFactory, HasSlug, HasTimestamps;
 
     protected $fillable = [
         'title',
         'slug',
-        'perex',
+        'category',
         'content',
     ];
 
-    public function collections()
+    public function article()
     {
-        return $this->hasMany(Collection::class);
+        return $this->belongsTo(Article::class);
     }
 
     public function getSlugOptions(): SlugOptions
@@ -31,5 +31,10 @@ class Article extends Model
             ->generateSlugsFrom('title')
             ->saveSlugsTo('slug')
             ->doNotGenerateSlugsOnUpdate();
+    }
+
+    public function getCategoryAttribute($value)
+    {
+        return $value ?? $this->title;
     }
 }

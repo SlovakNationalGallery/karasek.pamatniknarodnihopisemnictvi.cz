@@ -55,7 +55,7 @@ export default {
             params.append('category', this.category);
             params.append('size', 1000);
             this.fetchItems(params)
-                .then(() => {
+                .then(({data}) => {
                     this.hasMore = false;
                     const items = data.data;
                     this.items.push(...items.slice(this.items.length));
