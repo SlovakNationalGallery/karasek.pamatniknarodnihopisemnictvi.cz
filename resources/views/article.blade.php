@@ -4,29 +4,25 @@
     <div class="max-w-6xl mx-auto relative">
         <h1>{{ $article->title }}</h1>
 
-        <div class="font-medium my-8 text-center uppercase">
+        <div class="font-medium my-9 text-center uppercase">
             @foreach($article->collections as $collection)
                 <a class="mx-2 underline" href="#{{ $collection->slug }}">{{ $collection->title }}</a>
             @endforeach
         </div>
 
-        <div class="max-w-4xl mx-auto">
-            <p class="font-medium my-8 text-center text-xl">
+        <div class="max-w-4xl mx-auto my-9">
+            <p class="font-medium my-9 text-center text-xl">
                 {{ $article->perex }}
             </p>
 
-            <p class="my-8">
-                {!! $article->content !!}
-            </p>
+            {!! $article->content !!}
         </div>
 
         @foreach($article->collections as $collection)
             <h2 id="{{ $collection->slug }}">{{ $collection->title }}</h2>
 
-            <div class="max-w-4xl mx-auto">
-                <p class="my-8">
-                    {!! $collection->content !!}
-                </p>
+            <div class="max-w-4xl mx-auto my-9">
+                {!! $collection->content !!}
             </div>
 
             <catalog-component category="{{ $collection->category }}"></catalog-component>
