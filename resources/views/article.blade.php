@@ -21,7 +21,7 @@
         @foreach($article->collections as $collection)
             <h2 class="py-4 lg:py-8 underline" id="{{ $collection->slug }}">{{ $collection->title }}</h2>
 
-            <div class="max-w-4xl mx-auto mb-4 lg:mb-8">
+            <div class="max-w-4xl mx-auto mb-5 lg:mb-10">
                 {!! $collection->content !!}
             </div>
 

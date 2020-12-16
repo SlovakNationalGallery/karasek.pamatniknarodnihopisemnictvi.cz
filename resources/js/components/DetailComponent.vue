@@ -52,9 +52,7 @@
 
                     <hr class="border-t-0.5 border-black">
 
-                    <p class="my-3">
-                        {{ item.document.content.description }}
-                    </p>
+                    <p class="my-3 whitespace-pre-line">{{ item.document.content.description.trim() }}</p>
                 </div>
 
                 <div class="flex items-center justify-between lg:block bg-white lg:bg-none border-black border-t-0.5 lg:border-0 fixed lg:static bottom-0 left-5 right-5">
