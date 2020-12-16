@@ -55,6 +55,7 @@ export default {
             .then(({data}) => {
                 this.hasMore = data.next_page_url !== null;
                 this.items = data.data;
+                this.debounceScroll();
             });
     },
 
