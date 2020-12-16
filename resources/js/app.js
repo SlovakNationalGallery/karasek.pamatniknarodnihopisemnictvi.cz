@@ -1,7 +1,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-window.$ = require('jquery');
+window._ = require('lodash');
 window.OpenSeadragon = require('openseadragon');
 
 Vue.component('catalog-component', require('./components/CatalogComponent.vue').default);
@@ -43,6 +43,15 @@ const common = {
         vue.prototype.getAuthor = item => {
             return vue.prototype.formatName(item.document.content.author[0]);
         };
+        vue.prototype.debounceScroll = _.debounce(() => {
+            const id = window.location.hash.substring(1);
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        }, 500);
     }
 }
 

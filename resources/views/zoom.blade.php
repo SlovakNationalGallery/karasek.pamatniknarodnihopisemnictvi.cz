@@ -1,4 +1,4 @@
-@extends('layouts.app', ['fullHeight' => true])
+@extends('layouts.app')
 
 @section('content')
     <zoom-component id="{{ $item->id }}"

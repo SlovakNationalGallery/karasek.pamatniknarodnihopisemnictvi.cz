@@ -1,7 +1,6 @@
 <template>
     <div>
         <div id="viewer" class="absolute h-full left-0 m-0 min-h-full p-0 top-0 w-full"></div>
-
         <a class="absolute bg-white border-black border-0.5 font-medium left-0 m-8 opacity-60 active:opacity-100 hover:opacity-100 px-4 py-3 top-0 z-50" :href="backUrl" role="button" data-return>&larr; Zpět</a>
     </div>
 </template>
@@ -12,7 +11,6 @@ export default {
     data() {
         return {
             item: null,
-            credit: null,
         };
     },
 
@@ -48,18 +46,12 @@ export default {
                 this.viewer.forceRedraw();
             });
 
-            // zoom out instead of showing context menu on right click
-            this.viewer.canvas.oncontextmenu = () => { $('#zoom-out').click(); return false; };
-
-            $(viewer.canvas).mousedown(() => {
-                if (e.button === 2) {
-                    viewer.viewport.zoomBy(0.45); //0.9 * 0.5
-                    return false;
-                }
-                return true;
+            this.viewer.canvas.addEventListener('contextmenu', e => {
+                e.preventDefault();
             });
 
-            $('[data-return]').click(() => {
+            document.querySelector('[data-return]').addEventListener('click', e => {
+                e.preventDefault();
                 if (document.referrer.split('/')[2] === window.location.host) {
                     window.history.back();
 
@@ -67,33 +59,9 @@ export default {
                     setTimeout(() => {
                         window.location.href = this.backUrl;
                     }, 500);
-
-                    return false;
                 } else {
                     window.location.href = this.backUrl;
                 }
-            });
-
-            // hide on inactivity
-            let interval = 1;
-            const timeoutval = 3;
-
-            setInterval(() => {
-                if(interval === timeoutval){
-                    $('.autohide, .referencestrip').fadeOut();
-                    interval = 1;
-                }
-                interval += 1;
-            }, 1000);
-
-            $(this.viewer.canvas).bind('mousemove keydown', () => {
-                $('.autohide, .referencestrip').fadeIn();
-                interval = 1;
-            });
-
-            this.viewer.addHandler('canvas-click', () => {
-                $('.autohide, .referencestrip').fadeIn();
-                interval = 1;
             });
         }
     }

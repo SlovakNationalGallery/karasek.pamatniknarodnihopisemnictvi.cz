@@ -8,8 +8,8 @@
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="antialiased font-serif leading-relaxed p-5 lg:p-10 lg:text-lg tracking-wide {{ $bodyClasses ?? '' }} {{ !empty($fullHeight) ? 'min-h-full' : '' }}">
-    <div id="app" class="{{ !empty($fullHeight) ? 'min-h-full' : '' }}">
+<body class="antialiased font-serif leading-relaxed p-5 lg:p-10 lg:text-lg tracking-wide {{ $bodyClasses ?? '' }}">
+    <div id="app">
         @yield('content')
     </div>
 
