@@ -2,8 +2,11 @@
     <div v-if="item">
         <div class="max-w-6xl mx-auto mb-32 lg:mb-0">
             <div class="lg:flex lg:-mx-8 -my-8 lg:my-0 relative">
-                <div class="my-8 lg:my-0 lg:mx-8 lg:w-1/2">
-                    <a :href="getZoomUrl(item)">
+                <div class="my-8 lg:my-0 lg:mx-8 relative lg:w-1/2">
+                    <a :href="getZoomUrl(item)" class="group">
+                        <span class="absolute bg-black leading-none right-5 opacity-60 group-hover:opacity-100 p-2 rounded-full top-5 z-10">
+                            <i class="fa fa-search-plus text-white"></i>
+                        </span>
                         <img class="mx-auto" :src="getImage(item, 800)">
                     </a>
                 </div>
