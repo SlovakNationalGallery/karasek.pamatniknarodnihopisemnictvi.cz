@@ -8,7 +8,7 @@
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="antialiased font-serif leading-relaxed p-5 lg:p-10 lg:text-lg tracking-wide {{ $bodyClasses ?? '' }}">
+<body class="antialiased font-serif leading-relaxed p-5 lg:px-32 lg:py-10 lg:text-lg tracking-wide {{ $bodyClasses ?? '' }}">
     <div id="app">
         @yield('content')
     </div>
