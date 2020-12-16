@@ -14,8 +14,7 @@
     }
     @font-face {
         font-family: 'Ermina';
-        src: url(../fonts/Ermina.woff2) format('woff2'),
-        url(../fonts/Ermina.woff) format('woff');
+        src: url(../fonts/Ermina.woff) format('woff');
         font-weight: normal;
         font-style: normal;
         font-display: swap;
@@ -23,8 +22,7 @@
 
     @font-face {
         font-family: 'Ermina';
-        src: url(../fonts/Ermina-Medium.woff2) format('woff2'),
-        url(../fonts/Ermina-Medium.woff) format('woff');
+        src: url(../fonts/Ermina-Medium.woff) format('woff');
         font-weight: 500 900;
         font-style: normal;
         font-display: swap;
