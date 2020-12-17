@@ -95,7 +95,13 @@ export default {
                 this.item = data;
                 const order = this.item.document.content.additionals.order;
                 const params = new URLSearchParams();
-                params.append('category', this.item.document.content.additionals.category);
+                const set = this.item.document.content.additionals.set;
+                const category = this.item.document.content.additionals.category;
+                if (category) {
+                    params.append('category', category);
+                } else {
+                    params.append('set', set);
+                }
 
                 const prevParams = new URLSearchParams(params);
                 prevParams.append('order[lt]', order);
@@ -117,12 +123,21 @@ export default {
                         }
                     });
 
-                this.fetchCollections(params)
-                    .then(({data}) => {
-                        if (data.data[0]) {
-                            this.back = this.getCollectionUrl(data.data[0]);
-                        }
-                    });
+                if (category) {
+                    this.fetchCollections(params)
+                        .then(({data}) => {
+                            if (data.data[0]) {
+                                this.back = this.getCollectionUrl(data.data[0]);
+                            }
+                        });
+                } else {
+                    this.fetchArticles(params)
+                        .then(({data}) => {
+                            if (data.data[0]) {
+                                this.back = this.getArticleUrl(data.data[0]);
+                            }
+                        })
+                }
             });
     }
 }

@@ -18,6 +18,11 @@
             {!! $article->content !!}
         </div>
 
+
+        @if($article->set)
+            <catalog-component set="{{ $article->set }}"></catalog-component>
+        @endif
+
         @foreach($article->collections as $collection)
             <h2 class="py-4 lg:py-8 underline" id="{{ $collection->slug }}">{{ $collection->title }}</h2>
 
