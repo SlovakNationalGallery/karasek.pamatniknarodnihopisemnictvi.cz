@@ -3,10 +3,10 @@
 @section('content')
     @parent
 
-    <div class="max-w-4xl mx-auto">
+    <div class="max-w-4xl mx-auto -mt-28 mb-32 lg:mt-0 lg:mb-0">
         <figure class="my-12">
             <img src="https://via.placeholder.com/1280x720">
-            <figcaption class="font-medium my-8 text-center">WILLIAM HOGARTH, Pět typů paruk, 1761</figcaption>
+            <figcaption class="font-medium my-4 text-center">WILLIAM HOGARTH, Pět typů paruk, 1761</figcaption>
         </figure>
 
         <h2 class="py-4 lg:py-8 underline">O výstavě</h2>
