@@ -1,7 +1,7 @@
 <template>
-    <div class="mb-14 lg:mb-28 -mt-6 -mx-6" v-if="items.length">
+    <div class="mb-14 lg:mb-28 -mt-4 lg:-mt-6 -mx-4 lg:-mx-6" v-if="items.length">
         <isotope :options="getOptions()" :list="items">
-            <div v-for="item in items" :key="item.document.id" class="my-6 px-6 w-1/2 lg:w-1/3 leading-tight lg:leading-tight text-sm lg:text-base" data-grid-item>
+            <div v-for="item in items" :key="item.document.id" class="my-4 lg:my-6 px-4 lg:px-6 w-1/2 lg:w-1/3 leading-tight lg:leading-tight text-sm lg:text-base" data-grid-item>
                 <a :href="getDetailUrl(item)" class="relative block" :style="getStyle(item)">
                     <img :src="getImage(item, 800)" class="absolute left-0 top-0">
                 </a>
