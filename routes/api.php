@@ -61,7 +61,7 @@ Route::get('items', function (Request $request) {
         $sort['additionals.order'] = 'asc';
     }
     $sortFields = ['additionals.order'];
-    $directions = ['asc', 'dec'];
+    $directions = ['asc', 'desc'];
     foreach ($sort as $field => $direction) {
         if (in_array($field, $sortFields) &&
             in_array($direction, $directions)) {
