@@ -11,6 +11,7 @@ Vue.component('zoom-component', require('./components/ZoomComponent').default);
 const common = {
     install: vue => {
         const endpointItems = '/api/items';
+        const endpointArticles = '/api/articles';
         const endpointCollections = '/api/collections';
         vue.prototype.getImage = (item, size) => {
             return `${process.env.MIX_WEBUMENIA_URL}/dielo/nahlad/${item.document.id}/${size}`;
@@ -20,6 +21,9 @@ const common = {
         };
         vue.prototype.getZoomUrl = item => {
             return `/zoom/${item.document.id}`;
+        };
+        vue.prototype.getArticleUrl = article => {
+            return `/${article.slug}`;
         };
         vue.prototype.getCollectionUrl = collection => {
             return `/${collection.article.slug}#${collection.slug}`;
@@ -31,6 +35,11 @@ const common = {
         };
         vue.prototype.fetchItem = id => {
             return axios.get(`${endpointItems}/${id}`);
+        };
+        vue.prototype.fetchArticles = (params) => {
+            return axios.get(endpointArticles, {
+                params: params,
+            });
         };
         vue.prototype.fetchCollections = (params) => {
             return axios.get(endpointCollections, {

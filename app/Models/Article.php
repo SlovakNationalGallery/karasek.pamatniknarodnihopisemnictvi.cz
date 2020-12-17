@@ -18,6 +18,7 @@ class Article extends Model
         'slug',
         'perex',
         'content',
+        'set',
     ];
 
     public function collections()

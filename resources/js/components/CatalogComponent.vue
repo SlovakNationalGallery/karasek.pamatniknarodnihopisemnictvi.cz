@@ -45,11 +45,10 @@ export default {
         }
     },
 
-    props: ['category'],
+    props: ['category', 'set'],
 
     mounted() {
-        const params = new URLSearchParams();
-        params.append('category', this.category);
+        const params = this.getSearchParams();
         params.append('size', this.initCount);
         this.fetchItems(params)
             .then(({data}) => {
@@ -61,8 +60,7 @@ export default {
 
     methods: {
         loadAll() {
-            const params = new URLSearchParams();
-            params.append('category', this.category);
+            const params = this.getSearchParams();
             params.append('size', 1000);
             this.fetchItems(params)
                 .then(({data}) => {
@@ -81,6 +79,16 @@ export default {
                 itemSelector: '[data-grid-item]',
                 percentPosition: true,
             };
+        },
+        getSearchParams() {
+            const params = new URLSearchParams();
+            if (this.set) {
+                params.append('set', this.set);
+            }
+            if (this.category) {
+                params.append('category', this.category);
+            }
+            return params;
         }
     },
 

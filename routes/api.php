@@ -35,16 +35,24 @@ Route::get('items/{id}', function (Request $request, $id) {
 Route::get('items', function (Request $request) {
     $sort = (array)$request->get('sort');
     $perPage = (int)$request->get('size', 1);
+    $set = (string)$request->get('set');
     $category = (string)$request->get('category');
     $order = (array)$request->get('order');
 
-    if (!$category) {
+    if (!$set && !$category) {
         abort(404);
     }
 
     $builder = Item::boolSearch()
-        ->filter('term', ['gallery' => config('app.gallery')])
-        ->filter('term', ['additionals.category.keyword' => $category]);
+        ->filter('term', ['gallery' => config('app.gallery')]);
+
+    if ($set) {
+        $builder->filter('term', ['additionals.set.keyword' => $set]);
+    }
+
+    if ($category) {
+        $builder->filter('term', ['additionals.category.keyword' => $category]);
+    }
 
     $range = [];
     if (isset($order['lt'])) {
@@ -72,6 +80,19 @@ Route::get('items', function (Request $request) {
     $items = $builder->paginate($perPage);
 
     return response()->json($items);
+});
+
+Route::get('articles', function (Request $request) {
+    $set = (string)$request->get('set');
+    $perPage = (int)$request->get('size', 1);
+
+    $where = compact([
+        'set',
+    ]);
+    $articles = \App\Models\Article::where($where)
+        ->paginate($perPage);
+
+    return response()->json($articles);
 });
 
 Route::get('collections', function (Request $request) {

@@ -41,6 +41,7 @@ class ArticleCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::column('title');
+        CRUD::column('set');
         CRUD::column('created_at');
         CRUD::column('updated_at');
 
@@ -64,6 +65,7 @@ class ArticleCrudController extends CrudController
         CRUD::field('title');
         CRUD::field('perex');
         CRUD::field('content')->type('ckeditor');
+        CRUD::field('set');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
