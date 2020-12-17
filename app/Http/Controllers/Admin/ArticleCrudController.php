@@ -17,7 +17,6 @@ class ArticleCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ReorderOperation;
 
     /**
@@ -29,7 +28,8 @@ class ArticleCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\Article::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/article');
-        CRUD::setEntityNameStrings('article', 'articles');
+        CRUD::setEntityNameStrings('stránka', 'stránky');
+        $this->crud->orderBy('lft');
     }
 
     /**
@@ -40,10 +40,10 @@ class ArticleCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('title');
-        CRUD::column('set');
-        CRUD::column('created_at');
-        CRUD::column('updated_at');
+        CRUD::column('title')->label('Název');
+        CRUD::column('set')->label('Soubor');
+        CRUD::column('created_at')->label('Vytvořeno');
+        CRUD::column('updated_at')->label('Upraveno');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -62,10 +62,10 @@ class ArticleCrudController extends CrudController
     {
         CRUD::setValidation(ArticleRequest::class);
 
-        CRUD::field('title');
+        CRUD::field('title')->label('Název');
         CRUD::field('perex');
-        CRUD::field('content')->type('ckeditor');
-        CRUD::field('set');
+        CRUD::field('content')->label('Obsah')->type('ckeditor');
+        CRUD::field('set')->label('Soubor');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

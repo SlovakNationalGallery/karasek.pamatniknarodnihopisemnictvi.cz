@@ -17,7 +17,6 @@ class CollectionCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ReorderOperation;
 
     /**
@@ -29,7 +28,8 @@ class CollectionCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\Collection::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/collection');
-        CRUD::setEntityNameStrings('collection', 'collections');
+        CRUD::setEntityNameStrings('kolekce', 'kolekce');
+        $this->crud->orderBy('lft');
     }
 
     /**
@@ -40,11 +40,11 @@ class CollectionCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('title');
-        CRUD::column('category');
-        CRUD::column('article');
-        CRUD::column('created_at');
-        CRUD::column('updated_at');
+        CRUD::column('title')->label('Název');
+        CRUD::column('category')->label('Kategorie');
+        CRUD::column('article')->label('Stránka');
+        CRUD::column('created_at')->label('Vytvořeno');
+        CRUD::column('updated_at')->label('Upraveno');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -63,10 +63,10 @@ class CollectionCrudController extends CrudController
     {
         CRUD::setValidation(CollectionRequest::class);
 
-        CRUD::field('title');
-        CRUD::field('content')->type('ckeditor');
-        CRUD::field('category');
-        CRUD::field('article_id');
+        CRUD::field('title')->label('Název');
+        CRUD::field('content')->label('Obsah')->type('ckeditor');
+        CRUD::field('category')->label('Kategorie');
+        CRUD::field('article_id')->label('Stránka');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
