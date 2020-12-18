@@ -24,6 +24,10 @@
 
         <h2 class="py-4 lg:py-8 underline">Pořadatelé</h2>
 
+        <img class="max-w-lg mx-auto" src="/img/poradatele.svg">
+
         <h2 class="py-4 lg:py-8 underline">Partneři</h2>
+
+        <img class="max-w-lg mx-auto mb-32" src="/img/partneri.svg">
     </div>
 @endsection
