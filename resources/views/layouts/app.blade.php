@@ -22,9 +22,9 @@
 
     <title>Virtuální galerie Jiřího Karáska ze Lvovic</title>
 
-    <link rel="preload" href="/fonts/Ayer-Medium-Web.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="preload" href="/fonts/Ermina.woff" as="font" type="font/woff" crossorigin="anonymous">
-    <link rel="preload" href="/fonts/Ermina-Medium.woff" as="font" type="font/woff" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Ayer-Medium-Web.woff2?4d9e29854dacd915df5594a8e2186884" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Ermina.woff?9f7d1bbbcf839db384b88ec79a458dfb" as="font" type="font/woff" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Ermina-Medium.woff?4752de02c382db6e62fe8a69f9a452e1" as="font" type="font/woff" crossorigin="anonymous">
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
