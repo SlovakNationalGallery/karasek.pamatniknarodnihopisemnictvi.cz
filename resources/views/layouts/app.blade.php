@@ -23,6 +23,17 @@
     <title>Virtuální galerie Jiřího Karáska ze Lvovic</title>
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+
+    @if(App::environment('production'))
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-182651670-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-182651670-1');
+    </script>
+    @endif
 </head>
 <body class="antialiased font-serif leading-relaxed p-5 lg:px-32 lg:py-10 lg:text-lg tracking-wide {{ $bodyClasses ?? '' }}">
     <div id="app">
