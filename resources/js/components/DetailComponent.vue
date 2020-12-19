@@ -110,13 +110,13 @@ export default {
                     .then(({data}) => {
                         if (data.data[0]) {
                             this.previous = this.getDetailUrl(data.data[0]);
-                        }
 
-                        window.addEventListener('keydown', e => {
-                            if (e.which === 37) {
-                                window.location = this.previous;
-                            }
-                        });
+                            window.addEventListener('keydown', e => {
+                                if (e.which === 37) {
+                                    window.location = this.previous;
+                                }
+                            });
+                        }
                     });
 
                 const nextParams = new URLSearchParams(params);
@@ -126,13 +126,13 @@ export default {
                     .then(({data}) => {
                         if (data.data[0]) {
                             this.next = this.getDetailUrl(data.data[0]);
-                        }
 
-                        window.addEventListener('keydown', e => {
-                            if (e.which === 39) {
-                                window.location = this.next;
-                            }
-                        });
+                            window.addEventListener('keydown', e => {
+                                if (e.which === 39) {
+                                    window.location = this.next;
+                                }
+                            });
+                        }
                     });
 
                 if (category) {
