@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Virtuální galerie Jiřího Karáska připomímná významného českého básníka a zpřístupňuje bohatství jeho výtvarné sbírky, kterou spravuje Památník národního písemnictví. Prezentuje téměř 300 děl všech druhů, žánrů a období: obrazy, kresby, grafiky ale i plastiky.">
 
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -13,7 +14,7 @@
     <meta name="theme-color" content="#ffffff">
 
     <meta property="og:title" content="Virtuální galerie Jiřího Karáska ze Lvovic" />
-    <meta property="og:description" content="">
+    <meta property="og:description" content="Virtuální galerie Jiřího Karáska připomímná významného českého básníka a zpřístupňuje bohatství jeho výtvarné sbírky, kterou spravuje Památník národního písemnictví. Prezentuje téměř 300 děl všech druhů, žánrů a období: obrazy, kresby, grafiky ale i plastiky.">
     <meta property="og:type" content="website" />
     <meta property="og:author" content="http://lab.sng.sk/" />
     <meta property="og:url" content="https://karasek.pamatniknarodnihopisemnictvi.cz" />
