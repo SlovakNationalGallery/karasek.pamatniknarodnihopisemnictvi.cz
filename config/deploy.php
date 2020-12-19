@@ -104,6 +104,7 @@ return [
         'php_fpm_service' => 'php7.4-fpm',
         'shared_dirs' => [
             'public/packages',
+            'public/uploads',
             'resources/fonts',
             'storage'
         ]
