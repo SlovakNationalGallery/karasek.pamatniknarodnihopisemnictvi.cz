@@ -15,7 +15,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('', function () {
     $articles = \App\Models\Article::orderBy('lft')->get();
-    return view('homepage', compact('articles'));
+
+    $menu = $articles->mapWithKeys(function (\App\Models\Article $article) {
+        return [$article->slug => $article->title];
+    });
+
+    if (isset($menu['barokni-a-klasicistni-kresba-z-ceskych-zemi'])) {
+        $menu['barokni-a-klasicistni-kresba-z-ceskych-zemi'] = "Barokní a klasicistní kresba\nz českých zemí";
+    }
+
+    if (isset($menu['graficky-kabinet-evropska-grafika-a-kresba-15-18-stoleti'])) {
+        $menu['graficky-kabinet-evropska-grafika-a-kresba-15-18-stoleti'] = "Grafický kabinet Evropská grafika\na kresba 15.–18. století";
+    }
+
+    return view('homepage', compact('articles', 'menu'));
 })->name('homepage');
 
 Route::get('{article:slug}', function (\App\Models\Article $article) {
