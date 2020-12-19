@@ -6,7 +6,7 @@
 
         <div class="font-medium my-4 lg:my-8 text-center uppercase">
             @foreach($article->collections as $collection)
-                <a class="mx-2 underline" href="#{{ $collection->slug }}">{{ $collection->title }}</a>
+                <a class="mx-2 underline hover:no-underline" href="#{{ $collection->slug }}">{{ $collection->title }}</a>
             @endforeach
         </div>
 
@@ -15,7 +15,9 @@
                 {{ $article->perex }}
             </p>
 
-            {!! $article->content !!}
+            <div class="text-content">
+                {!! $article->content !!}
+            </div>
         </div>
 
 
@@ -26,7 +28,7 @@
         @foreach($article->collections as $collection)
             <h2 class="py-4 lg:py-8 underline" id="{{ $collection->slug }}">{{ $collection->title }}</h2>
 
-            <div class="max-w-4xl mx-auto mb-5 lg:mb-10">
+            <div class="text-content max-w-4xl mx-auto mb-5 lg:mb-10">
                 {!! $collection->content !!}
             </div>
 
