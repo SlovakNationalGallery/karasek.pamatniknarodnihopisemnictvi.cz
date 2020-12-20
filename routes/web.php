@@ -25,7 +25,7 @@ Route::get('', function () {
     }
 
     if (isset($menu['graficky-kabinet-evropska-grafika-a-kresba-15-18-stoleti'])) {
-        $menu['graficky-kabinet-evropska-grafika-a-kresba-15-18-stoleti'] = "Grafický kabinet Evropská grafika\na kresba 15.–18. století";
+        $menu['graficky-kabinet-evropska-grafika-a-kresba-15-18-stoleti'] = "Grafický kabinet\nEvropská grafika\na kresba 15.–18. století";
     }
 
     return view('homepage', compact('articles', 'menu'));
