@@ -6,7 +6,7 @@
     <div class="max-w-4xl mx-auto -mt-28 mb-32 lg:mt-0 lg:mb-0">
         <h2 class="py-4 lg:py-8 underline">O výstavě</h2>
 
-        <div class="leading-tight mb-8 max-w-2xl mx-auto text-content text-center">
+        <div class="mb-8 max-w-2xl mx-auto text-content text-center">
             <p>Autoři a kurátoři: Barbora Vlášková, Jan Bouček</p>
             <p>Odborný poradce: Vilma Hubáčková</p>
             <p>Layout a grafický design: Jaroslav Tvrdoň, lab.SNG</p>
