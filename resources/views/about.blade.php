@@ -4,23 +4,17 @@
     @parent
 
     <div class="max-w-4xl mx-auto -mt-28 mb-32 lg:mt-0 lg:mb-0">
-        <!-- <figure class="my-12">
-            <img src="https://via.placeholder.com/1280x720">
-            <figcaption class="font-medium my-4 text-center">WILLIAM HOGARTH, Pět typů paruk, 1761</figcaption>
-        </figure> -->
-
         <h2 class="py-4 lg:py-8 underline">O výstavě</h2>
 
-        <p class="text-center mb-8">
-            Autoři a kurátoři: Barbora Vlášková, Jan Bouček<br>
-            Odborný poradce: Vilma Hubáčková<br>
-            Layout a grafický design: Jaroslav Tvrdoň, lab.SNG<br>
-            Audiovizuální vzdělávací materiály: Kateřina Švejdová, Zuzana Dvorská Šípová,<br>
-            Marie Píchová, Jindřich Čížek, Petr Gal<br>
-            Propagace: Aneta Křižková<br>
-            Fotografie a skenování: Filip Beránek, Miroslav Lisner<br>
-            Technická realizace: lab.SNG
-        </p>
+        <div class="leading-tight mb-8 max-w-2xl mx-auto text-content text-center">
+            <p>Autoři a kurátoři: Barbora Vlášková, Jan Bouček</p>
+            <p>Odborný poradce: Vilma Hubáčková</p>
+            <p>Layout a grafický design: Jaroslav Tvrdoň, lab.SNG</p>
+            <p>Audiovizuální vzdělávací materiály: Kateřina Švejdová, Zuzana Dvorská Šípová, Jindřich Čížek, Petr Gal</p>
+            <p>Propagace: Aneta Křižková</p>
+            <p>Fotografie a skenování: Filip Beránek, Miroslav Lisner</p>
+            <p>Technická realizace: lab.SNG</p>
+        </div>
 
         <h2 class="py-4 lg:py-8 underline">Pořadatelé</h2>
 
