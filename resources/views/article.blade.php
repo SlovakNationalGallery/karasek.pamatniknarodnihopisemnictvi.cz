@@ -6,7 +6,7 @@
 
         <div class="font-medium my-4 lg:my-8 text-center uppercase">
             @foreach($article->collections as $collection)
-                <a class="mx-2 underline hover:no-underline" href="#{{ $collection->slug }}">{{ $collection->title }}</a>
+                <a class="mx-2 underline hover:no-underline whitespace-nowrap" href="#{{ $collection->slug }}">{{ $collection->title }}</a>
             @endforeach
         </div>
 
