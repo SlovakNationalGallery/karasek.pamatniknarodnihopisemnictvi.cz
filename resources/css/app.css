@@ -53,6 +53,10 @@
         @apply font-medium text-center uppercase;
     }
 
+    h3 {
+        @apply font-medium my-4 text-center;
+    }
+
     /* purgecss start ignore */
     .text-content [data-oembed-url] > div {
         @apply max-w-3xl !important;
