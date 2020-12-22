@@ -46,7 +46,7 @@
     }
 
     .text-content [data-oembed-url] > div {
-        @apply max-w-3xl !important;
+        max-width: 48rem !important;
     }
 
     h1 {
