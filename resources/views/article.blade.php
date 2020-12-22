@@ -20,7 +20,6 @@
             </div>
         </div>
 
-
         @if($article->set)
             <catalog-component set="{{ $article->set }}"></catalog-component>
         @endif
@@ -32,7 +31,9 @@
                 {!! $collection->content !!}
             </div>
 
-            <catalog-component category="{{ $collection->category }}"></catalog-component>
+            @if($collection->category)
+                <catalog-component category="{{ $collection->category }}"></catalog-component>
+            @endif
         @endforeach
 
         <div class="flex items-center justify-center lg:block bg-white lg:bg-none border-black border-t-0.5 lg:border-0 fixed lg:static bottom-0 left-5 right-5">
