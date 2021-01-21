@@ -46,7 +46,7 @@
     }
 
     h1 {
-        @apply bg-white border-2 md:border-4 border-black font-display leading-none md:leading-none mb-5 lg:mb-10 pb-4 lg:pb-8 pt-3 lg:pt-6 px-4 lg:px-8 text-5xl md:text-8xl text-center tracking-normal;
+        @apply bg-white border-2 md:border-4 border-black font-display leading-none md:leading-none mb-5 lg:mb-10 pb-2 lg:pb-8 pt-2 lg:pt-6 px-4 lg:px-8 text-5xl md:text-8xl text-center tracking-normal;
     }
 
     h2 {
