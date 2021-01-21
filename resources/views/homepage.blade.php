@@ -8,7 +8,7 @@
     <div class="md:border-0.5 border-black md:mt-10 p-5 text-center">
         <div class="max-w-6xl mx-auto">
             @foreach($menu as $slug => $title)
-                <a class="block md:inline-block font-medium hover:no-underline mx-2 my-1 underline uppercase" href="{{ route('article', ['article' => $slug]) }}">{{ $title }}</a>
+                <a class="block md:inline-block font-medium leading-normal my-4 md:mx-2 md:my-1 underline hover:no-underline uppercase" href="{{ route('article', ['article' => $slug]) }}">{{ $title }}</a>
             @endforeach
         </div>
     </div>
