@@ -34,9 +34,6 @@ module.exports = {
         '9xl': ['8rem', 'inherit'],
     },
     extend: {
-        backgroundImage: {
-            'texture': 'url("/img/texture.jpg")',
-        },
         fontFamily: {
             'display': ['Ayer Web Medium', 'serif'],
             'serif': ['Ermina', 'serif'],
