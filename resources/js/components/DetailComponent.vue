@@ -77,7 +77,11 @@
 </template>
 
 <script>
+import { apiMixin } from '../mixins';
+
 export default {
+    mixins: [apiMixin],
+
     data() {
         return {
             item: null,
@@ -94,17 +98,18 @@ export default {
             .then(({data}) => {
                 this.item = data;
                 const order = this.item.document.content.additionals.order;
-                const params = new URLSearchParams();
                 const set = this.item.document.content.additionals.set;
                 const category = this.item.document.content.additionals.category;
+
+                const params = new URLSearchParams();
                 if (category) {
-                    params.append('category', category);
+                    params.append('filter[additionals.category.keyword]', category);
                 } else {
-                    params.append('set', set);
+                    params.append('filter[additionals.set.keyword]', set);
                 }
 
                 const prevParams = new URLSearchParams(params);
-                prevParams.append('order[lt]', order);
+                prevParams.append('filter[additionals.order][lt]', order);
                 prevParams.append('sort[additionals.order]', 'desc');
                 this.fetchItems(prevParams)
                     .then(({data}) => {
@@ -120,7 +125,7 @@ export default {
                     });
 
                 const nextParams = new URLSearchParams(params);
-                nextParams.append('order[gt]', order);
+                nextParams.append('filter[additionals.order][gt]', order);
                 nextParams.append('sort[additionals.order]', 'asc');
                 this.fetchItems(nextParams)
                     .then(({data}) => {
@@ -136,14 +141,14 @@ export default {
                     });
 
                 if (category) {
-                    this.fetchCollections(params)
+                    this.fetchCollections(new URLSearchParams({category}))
                         .then(({data}) => {
                             if (data.data[0]) {
                                 this.back = this.getCollectionUrl(data.data[0]);
                             }
                         });
                 } else {
-                    this.fetchArticles(params)
+                    this.fetchArticles(new URLSearchParams({set}))
                         .then(({data}) => {
                             if (data.data[0]) {
                                 this.back = this.getArticleUrl(data.data[0]);

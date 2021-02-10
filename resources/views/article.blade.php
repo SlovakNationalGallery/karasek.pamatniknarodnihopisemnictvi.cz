@@ -21,7 +21,7 @@
         </div>
 
         @if($article->set)
-            <catalog-component set="{{ $article->set }}"></catalog-component>
+            <grid-component :filter='@json(['additionals.set.keyword' => $article->set])'></grid-component>
         @endif
 
         @foreach($article->collections as $collection)
@@ -32,7 +32,7 @@
             </div>
 
             @if($collection->category)
-                <catalog-component category="{{ $collection->category }}"></catalog-component>
+                <grid-component :per-page="6" :filter='@json(['additionals.category.keyword' => $collection->category])'></grid-component>
             @endif
         @endforeach
 

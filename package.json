@@ -25,7 +25,11 @@
         "isotope-layout": "^3.0.6",
         "loadash": "^1.0.0",
         "openseadragon": "^2.4.2",
+        "qs": "^6.9.6",
         "vue": "^2.6.12",
+        "vue-router": "^3.5.1",
+        "vue-select": "^3.11.2",
+        "vue-slider-component": "^3.2.11",
         "vueisotope": "^3.1.2"
     }
 }
