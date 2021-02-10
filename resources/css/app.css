@@ -1,7 +1,11 @@
+@import "~@fortawesome/fontawesome-free/css/all.css";
+@import "~vue-slider-component/dist-css/vue-slider-component.css";
+@import "~vue-slider-component/theme/default.css";
+@import '~vue-select/dist/vue-select.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "~@fortawesome/fontawesome-free/css/all.css";
 
 @layer base {
     @font-face {
@@ -12,6 +16,7 @@
         font-style: normal;
         font-display: swap;
     }
+
     @font-face {
         font-family: 'Ermina';
         src: url(../fonts/Ermina.woff) format('woff');
@@ -60,6 +65,58 @@
     /* purgecss start ignore */
     .text-content [data-oembed-url] > div {
         @apply max-w-3xl !important;
+    }
+
+    .vue-slider {
+        @apply mx-1.5 pb-3 pt-0 !important;
+    }
+
+    .vue-slider-process {
+        @apply bg-black;
+    }
+
+    .vue-slider-dot {
+        @apply text-2xl;
+    }
+
+    .vue-slider-dot-handle {
+        @apply bg-transparent shadow-none;
+    }
+
+    .vue-slider-dot-handle::before {
+        @apply absolute font-normal mt-0.5 top-1/2 transform -translate-y-1/2;
+    }
+
+    .vue-slider-dot:nth-child(2) .vue-slider-dot-handle::before {
+        content: '←';
+    }
+
+    .vue-slider-dot:nth-child(3) .vue-slider-dot-handle::before {
+        content: '→';
+    }
+
+    .vs__actions {
+        @apply pr-0 pt-0;
+    }
+
+    .vs__clear {
+        @apply fill-current;
+    }
+
+    .vs__dropdown-toggle {
+        @apply border-black border-t-0.5 border-0 p-0 pt-3 rounded-none;
+    }
+
+    .vs__search {
+        @apply border-0 font-medium m-0 p-0 focus:m-0 focus:p-0 uppercase;
+    }
+
+    .vs__selected {
+        @apply border-0 m-0 p-0 text-black;
+    }
+
+    .vs__selected-options {
+        @apply p-0;
     }
     /* purgecss end ignore */
 }

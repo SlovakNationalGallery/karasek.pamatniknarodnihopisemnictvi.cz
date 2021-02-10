@@ -31,6 +31,10 @@ Route::get('', function () {
     return view('homepage', compact('articles', 'menu'));
 })->name('homepage');
 
+Route::get('katalog', function () {
+    return view('catalog');
+})->name('catalog');
+
 Route::get('{article:slug}', function (\App\Models\Article $article) {
     $template = $article->slug === 'o-vystave' ? 'about' : 'article';
     return view($template, compact('article'));
@@ -43,3 +47,4 @@ Route::get('detail/{item:id}', function (\App\Models\Item $item) {
 Route::get('zoom/{item:id}', function (\App\Models\Item $item) {
     return view('zoom', compact('item'));
 })->name('zoom');
+

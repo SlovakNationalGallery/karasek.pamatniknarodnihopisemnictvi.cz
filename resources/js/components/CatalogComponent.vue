@@ -1,99 +1,137 @@
 <template>
-    <div class="mb-14 lg:mb-28 -mt-4 lg:-mt-6 -mx-4 lg:-mx-6" v-if="items.length">
-        <isotope :options="getOptions()" :list="items">
-            <div v-for="item in items" :key="item.document.id" class="my-4 lg:my-6 px-4 lg:px-6 w-1/2 lg:w-1/3 leading-tight lg:leading-tight text-sm lg:text-base" data-grid-item>
-                <a :href="getDetailUrl(item)" class="relative block" :style="getStyle(item)">
-                    <img :src="getImage(item, 800)" class="absolute left-0 top-0">
-                </a>
+    <div>
+        <div class="flex flex-wrap font-medium my-8 lg:my-16 -mx-4">
+            <div class="mb-4 px-4 w-1/2 md:w-1/4">
+                <v-select v-model="query.filter.author" :options="options.author" label="key" :reduce="option => option.key" @input="updateFilterDebounced" :components="{OpenIndicator}" placeholder="Autor">
+                    <template v-slot:selected-option="option">
+                        {{ formatName(option.key) }}
+                    </template>
+                    <template v-slot:option="option">
+                        {{ formatName(option.key) }} [{{ option.doc_count }}]
+                    </template>
+                </v-select>
+            </div>
 
-                <div class="flex mt-4 justify-between">
-                    <div>
-                        <p class="my-1"><a :href="getDetailUrl(item)">{{ item.document.content.title }}</a></p>
-                        <p class="my-1 font-medium"><a :href="getDetailUrl(item)">{{ getAuthor(item) }}</a></p>
-                        <p class="mt-1"><a :href="getDetailUrl(item)">{{ item.document.content.dating }}</a></p>
-                    </div>
+            <div class="mb-4 px-4 w-1/2 md:w-1/4">
+                <v-select v-model="query.filter.topic" :options="options.topic" label="key" :reduce="option => option.key" @input="updateFilterDebounced" :components="{OpenIndicator}" placeholder="Námět">
+                    <template v-slot:option="option">
+                        {{ option.key }} [{{ option.doc_count }}]
+                    </template>
+                </v-select>
+            </div>
 
-                    <div class="pl-5">
-                        <a :href="getZoomUrl(item)" class="opacity-50 hover:opacity-100">
-                            <i class="fa fa-search-plus text-xl"><span class="sr-only">Zoom</span></i>
-                        </a>
-                    </div>
+            <div class="mb-4 px-4 w-full md:w-1/2">
+                <slider-component v-model="years"
+                                  v-if="options.yearMin && options.yearMax"
+                                  :min="options.yearMin"
+                                  :max="options.yearMax"
+                                  :duration="0"
+                                  :height="2"
+                                  tooltip="none"
+                                  @change="updateFilterDebounced"
+                ></slider-component>
+                <div class="flex justify-between" v-if="years">
+                    <span>{{ years[0] }}</span>
+                    <span>{{ years[1] }}</span>
                 </div>
             </div>
-        </isotope>
-
-        <div class="text-center" v-if="hasMore">
-            <button class="active:bg-gray-100 hover:bg-gray-100 border-black border-0.5 font-medium px-4 py-3" v-on:click.once="loadAll()">Všechna díla</button>
         </div>
+        <grid-component :filter="query.filter"></grid-component>
     </div>
 </template>
 
 <script>
-import isotope from 'vueisotope';
+import _ from 'lodash';
+import VueSlider from "vue-slider-component";
+import VueSelect from "vue-select";
+import { apiMixin } from '../mixins';
 
 export default {
-    data: function () {
+    mixins: [apiMixin],
+
+    data() {
         return {
-            items: [],
-            endpoint: '/api/items',
-            initCount: 6,
-            hasMore: false,
+            query: {
+                filter: {
+                    author: null,
+                    topic: null,
+                    date_latest: { gte: null },
+                    date_earliest: { lte: null },
+                },
+            },
             options: {
-                itemSelector: '[data-grid-item]',
-                percentPosition: true,
-            }
+                author: [],
+                topic: [],
+                yearMin: null,
+                yearMax: null,
+            },
+            OpenIndicator: {
+                render: createElement => createElement('span', '↓')
+            },
         }
     },
 
-    props: ['category', 'set'],
+    computed: {
+        years: {
+            set(value) {
+                this.query.filter.date_latest.gte = value[0];
+                this.query.filter.date_earliest.lte = value[1];
+            },
+            get() {
+                return [
+                    this.query.filter.date_latest.gte ?? this.options.yearMin,
+                    this.query.filter.date_earliest.lte ?? this.options.yearMax,
+                ];
+            }
+        },
+    },
+
+    created() {
+        this.updateFilterDebounced = _.debounce(this.updateFilter, 300);
+        this.query = _.merge(this.query, this.$route.query);
+        this.$watch('query', function (value) {
+            this.$router.replace({ query: value });
+        }, {
+            deep: true,
+        });
+    },
 
     mounted() {
-        const params = this.getSearchParams();
-        params.append('size', this.initCount);
-        this.fetchItems(params)
-            .then(({data}) => {
-                this.hasMore = data.next_page_url !== null;
-                this.items = data.data;
-                this.debounceScroll();
-            });
+        this.updateFilterDebounced();
+        this.updateYearsRange();
     },
 
     methods: {
-        loadAll() {
-            const params = this.getSearchParams();
+        updateFilter() {
+            const params = this.createParams();
+            this.addFilter(params, this.query.filter);
             params.append('size', 1000);
-            this.fetchItems(params)
+            const terms = ['author', 'topic'];
+            terms.forEach(field => {
+                params.append(`terms[${field}]`, field);
+            });
+            axios.get(this.endpoints.aggregations, {params})
                 .then(({data}) => {
-                    this.hasMore = false;
-                    const items = data.data;
-                    this.items.push(...items.slice(this.items.length));
+                    terms.forEach(field => {
+                        this.$set(this.options, field, data[field].buckets);
+                    });
                 });
         },
-        getStyle(item) {
-            const ratio = item.document.content.image_ratio || .875;
-            const paddingBottom = 100 / ratio;
-            return `padding-bottom: ${paddingBottom}%;`;
+        updateYearsRange() {
+            const params = this.createParams();
+            params.append('min[min_date]', 'date_earliest');
+            params.append('max[max_date]', 'date_latest');
+            axios.get(this.endpoints.aggregations, {params})
+                .then(({data}) => {
+                    this.$set(this.options, 'yearMin', data['min_date'].value);
+                    this.$set(this.options, 'yearMax', data['max_date'].value);
+                });
         },
-        getOptions() {
-            return {
-                itemSelector: '[data-grid-item]',
-                percentPosition: true,
-            };
-        },
-        getSearchParams() {
-            const params = new URLSearchParams();
-            if (this.set) {
-                params.append('set', this.set);
-            }
-            if (this.category) {
-                params.append('category', this.category);
-            }
-            return params;
-        }
     },
 
     components: {
-        isotope
+        'slider-component': VueSlider,
+        'v-select': VueSelect,
     }
 }
 </script>
