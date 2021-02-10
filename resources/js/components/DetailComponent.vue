@@ -101,7 +101,7 @@ export default {
                 const set = this.item.document.content.additionals.set;
                 const category = this.item.document.content.additionals.category;
 
-                const params = new URLSearchParams();
+                const params = this.createParams();
                 if (category) {
                     params.append('filter[additionals.category.keyword]', category);
                 } else {
