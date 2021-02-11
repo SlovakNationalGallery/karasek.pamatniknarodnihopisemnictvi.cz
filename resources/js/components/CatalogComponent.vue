@@ -110,7 +110,7 @@ export default {
             terms.forEach(field => {
                 params.append(`terms[${field}]`, field);
             });
-            axios.get(this.endpoints.aggregations, {params})
+            this.fetchAggregations(params)
                 .then(({data}) => {
                     terms.forEach(field => {
                         this.$set(this.options, field, data[field].buckets);
@@ -121,7 +121,7 @@ export default {
             const params = this.createParams();
             params.append('min[min_date]', 'date_earliest');
             params.append('max[max_date]', 'date_latest');
-            axios.get(this.endpoints.aggregations, {params})
+            this.fetchAggregations(params)
                 .then(({data}) => {
                     this.$set(this.options, 'yearMin', data['min_date'].value);
                     this.$set(this.options, 'yearMax', data['max_date'].value);
