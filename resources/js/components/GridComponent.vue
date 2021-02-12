@@ -73,7 +73,9 @@ export default {
 
     methods: {
         load() {
-            const params = this.getSearchParams();
+            const params = this.createParams();
+            this.addFilter(params, this.filter);
+            params.append('size', this.perPage);
             this.fetchItems(params)
                 .then(({data}) => {
                     this.nextPage = data.next_page_url;
@@ -88,12 +90,6 @@ export default {
                     this.nextPage = data.next_page_url;
                     this.items.push(...data.data);
                 });
-        },
-        getSearchParams() {
-            const params = this.createParams();
-            this.addFilter(params, this.filter);
-            params.append('size', this.perPage);
-            return params;
         },
         getPaddingBottom(item) {
             const ratio = item.document.content.image_ratio || .875;

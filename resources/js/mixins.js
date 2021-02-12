@@ -8,7 +8,7 @@ export const apiMixin = {
                 aggregations: `${process.env.MIX_WEBUMENIA_API}/items/aggregations`,
             },
             defaultSearchParams: {
-                'filter[additionals.frontend]': 'karasek.pamatniknarodnihopisemnictvi.cz',
+                'filter[additionals.frontend.keyword]': 'karasek.pamatniknarodnihopisemnictvi.cz',
                 'locale': 'cs',
             }
         }
@@ -32,14 +32,14 @@ export const apiMixin = {
                 params.append(key, value);
             }
         },
-        fetchItems(params) {
-            params.append('locale', 'cs');
-            return axios.get(this.endpoints.items, {
-                params: params,
-            });
-        },
         fetchItem(id) {
             return axios.get(`${this.endpoints.items}/${id}?locale=cs`);
+        },
+        fetchItems(params) {
+            return axios.get(this.endpoints.items, {params});
+        },
+        fetchAggregations(params) {
+            return axios.get(this.endpoints.aggregations, {params});
         },
     }
 };
