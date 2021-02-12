@@ -103,6 +103,10 @@
         @apply fill-current;
     }
 
+    .vs__dropdown-option {
+        @apply whitespace-normal;
+    }
+
     .vs__dropdown-toggle {
         @apply border-black border-t-0.5 border-0 p-0 pt-3 rounded-none;
     }
