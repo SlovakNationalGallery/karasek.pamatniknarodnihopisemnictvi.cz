@@ -75,24 +75,8 @@
         @apply bg-black;
     }
 
-    .vue-slider-dot {
-        @apply text-2xl;
-    }
-
     .vue-slider-dot-handle {
-        @apply bg-transparent shadow-none;
-    }
-
-    .vue-slider-dot-handle::before {
-        @apply absolute font-normal mt-0.5 top-1/2 transform -translate-y-1/2;
-    }
-
-    .vue-slider-dot:nth-child(2) .vue-slider-dot-handle::before {
-        content: '←';
-    }
-
-    .vue-slider-dot:nth-child(3) .vue-slider-dot-handle::before {
-        content: '→';
+        @apply bg-black shadow-none;
     }
 
     .vs__actions {

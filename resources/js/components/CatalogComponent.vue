@@ -27,6 +27,7 @@
                                   :max="options.yearMax"
                                   :duration="0"
                                   :height="2"
+                                  :dotSize="12"
                                   tooltip="none"
                                   @change="updateFilterDebounced"
                 ></slider-component>
