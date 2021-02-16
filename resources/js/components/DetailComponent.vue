@@ -14,9 +14,7 @@
                     <hr class="border-black border-t-0.5">
 
                     <h2 class="leading-tight py-4 text-xl lg:text-2xl">
-                        <div v-for="(author, index) in item.document.content.author" :key="`author_${index}`">
-                            <a class="hover:underline" :href="`/katalog#/?filter[author]=${encodeURIComponent(author)}`">{{ formatName(author) }}</a>
-                        </div>
+                        <a class="hover:underline" :href="`/katalog#/?filter[author]=${encodeURIComponent(item.document.content.author[0])}`">{{ formatName(item.document.content.author[0]) }}</a>
                         <span class="whitespace-nowrap" v-if="item.document.content.additionals.author_birth_year || item.document.content.additionals.author_death_year">
                             ({{ item.document.content.additionals.author_birth_year }}—{{ item.document.content.additionals.author_death_year}})
                         </span>
