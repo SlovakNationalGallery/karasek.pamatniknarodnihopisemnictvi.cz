@@ -40,7 +40,7 @@
     </script>
     @endif
 </head>
-<body class="antialiased font-serif leading-relaxed p-5 lg:px-32 lg:py-10 lg:text-lg tracking-wide {{ $bodyClasses ?? '' }}">
+<body class="antialiased font-serif leading-relaxed p-5 lg:px-48 lg:py-10 lg:text-lg tracking-wide {{ $bodyClasses ?? '' }}">
     <div id="app">
         @yield('content')
     </div>

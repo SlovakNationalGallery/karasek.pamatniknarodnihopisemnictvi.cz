@@ -14,10 +14,12 @@
                     <hr class="border-black border-t-0.5">
 
                     <h2 class="leading-tight py-4 text-xl lg:text-2xl">
-                        <a class="hover:underline" :href="`/katalog#/?filter[author]=${encodeURIComponent(item.document.content.author[0])}`">{{ formatName(item.document.content.author[0]) }}</a>
-                        <span class="whitespace-nowrap" v-if="item.document.content.additionals.author_birth_year || item.document.content.additionals.author_death_year">
-                            ({{ item.document.content.additionals.author_birth_year }}—{{ item.document.content.additionals.author_death_year}})
-                        </span>
+                        <a class="hover:underline" :href="`/katalog#/?filter[author]=${encodeURIComponent(item.document.content.author[0])}`">
+                            {{ formatName(item.document.content.author[0]) }}
+                            <span class="whitespace-nowrap" v-if="item.document.content.additionals.author_birth_year || item.document.content.additionals.author_death_year">
+                                ({{ item.document.content.additionals.author_birth_year }}—{{ item.document.content.additionals.author_death_year}})
+                            </span>
+                        </a>
                     </h2>
 
                     <hr class="border-black border-t-0.5">
@@ -59,22 +61,7 @@
                     <p class="my-3 whitespace-pre-line">{{ item.document.content.description.trim() }}</p>
                 </div>
 
-                <div class="flex items-center justify-between lg:block bg-white lg:bg-none border-black border-t-0.5 lg:border-0 fixed lg:static bottom-0 left-5 right-5">
-                    <div class="lg:absolute right-full p-4 lg:p-8">
-                        <a class="lg:fixed leading-none text-6xl top-1/2 transform -translate-x-full -translate-y-1/2" :href="previous" v-if="previous">&larr;</a>
-                    </div>
-
-                    <div class="lg:absolute left-full p-4 lg:p-8">
-                        <div class="bottom-8 lg:fixed font-medium leading-loose text-center underline uppercase">
-                            <a :href="back" v-if="back">Zpět</a><br>
-                            <a href="/">Menu</a>
-                        </div>
-                    </div>
-
-                    <div class="lg:absolute left-full p-4 lg:p-8">
-                        <a class="lg:fixed leading-none text-6xl top-1/2 transform -translate-y-1/2" :href="next" v-if="next">&rarr;</a>
-                    </div>
-                </div>
+                <menu-component :back="back" :previous="previous" :next="next"></menu-component>
             </div>
         </div>
     </div>

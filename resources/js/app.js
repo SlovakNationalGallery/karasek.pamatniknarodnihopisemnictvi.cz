@@ -12,6 +12,7 @@ Vue.component('catalog-component', require('./components/CatalogComponent').defa
 Vue.component('grid-component', require('./components/GridComponent').default);
 Vue.component('detail-component', require('./components/DetailComponent').default);
 Vue.component('zoom-component', require('./components/ZoomComponent').default);
+Vue.component('menu-component', require('./components/MenuComponent').default);
 
 const common = {
     install: vue => {
