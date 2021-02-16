@@ -27,7 +27,12 @@ const common = {
             return `${process.env.MIX_WEBUMENIA_URL}/dielo/nahlad/${item.document.id}/${size}`;
         };
         vue.prototype.getDetailUrl = item => {
-            return `/detail/${item.document.id}`;
+            let query = '';
+            if (/^\/katalog/.test(window.location.pathname)) {
+                query = '?catalog=1'
+            }
+
+            return `/detail/${item.document.id}${query}`;
         };
         vue.prototype.getZoomUrl = item => {
             return `/zoom/${item.document.id}`;

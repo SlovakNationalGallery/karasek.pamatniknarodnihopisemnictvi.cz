@@ -15,6 +15,6 @@
 
         <catalog-component></catalog-component>
 
-        <menu-component></menu-component>
+        <menu-component :catalog="false"></menu-component>
     </div>
 @endsection

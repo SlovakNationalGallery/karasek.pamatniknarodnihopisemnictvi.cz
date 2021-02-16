@@ -61,7 +61,7 @@
                     <p class="my-3 whitespace-pre-line">{{ item.document.content.description.trim() }}</p>
                 </div>
 
-                <menu-component :back="back" :previous="previous" :next="next"></menu-component>
+                <menu-component :back="back" :previous="previous" :next="next" :top="false"></menu-component>
             </div>
         </div>
     </div>
@@ -82,12 +82,17 @@ export default {
         };
     },
 
-    props: ['id'],
+    props: ['id', 'fromCatalog'],
 
     created() {
         this.fetchItem(this.id)
             .then(({data}) => {
                 this.item = data;
+
+                if (this.fromCatalog) {
+                    return;
+                }
+
                 const order = this.item.document.content.additionals.order;
                 const set = this.item.document.content.additionals.set;
                 const category = this.item.document.content.additionals.category;

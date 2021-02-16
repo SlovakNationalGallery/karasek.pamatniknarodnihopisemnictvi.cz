@@ -7,9 +7,9 @@
         <div class="lg:absolute flex-grow lg:left-full lg:p-8">
             <div class="bottom-8 lg:fixed flex flex-wrap lg:flex-col font-medium justify-center leading-loose text-center uppercase">
                 <a class="underline px-3" :href="back" v-if="back">Zpět</a>
-                <a class="underline px-3" href="#" v-else>Nahoru</a>
+                <a class="underline px-3" href="#" v-else-if="top">Nahoru</a>
                 <a class="underline px-3" href="/">Menu</a>
-                <a class="underline px-3" href="/katalog">Katalog</a>
+                <a class="underline px-3" href="/katalog" v-if="catalog">Katalog</a>
             </div>
         </div>
 
@@ -21,6 +21,25 @@
 
 <script>
 export default {
-    props: ['back', 'previous', 'next'],
+    props: {
+        back: {
+            type: String
+        },
+        previous: {
+            type: String
+        },
+        next: {
+            type: String
+        },
+        top: {
+            type: Boolean,
+            default: true,
+        },
+        catalog: {
+            type: Boolean,
+            default: true,
+        }
+    }
+
 }
 </script>
