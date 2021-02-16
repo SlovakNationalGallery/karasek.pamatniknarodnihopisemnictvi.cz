@@ -14,7 +14,9 @@
                     <hr class="border-black border-t-0.5">
 
                     <h2 class="leading-tight py-4 text-xl lg:text-2xl">
-                        {{ getAuthor(item) }}
+                        <div v-for="(author, index) in item.document.content.author" :key="`author_${index}`">
+                            <a class="hover:underline" :href="`/katalog#/?filter[author]=${encodeURIComponent(author)}`">{{ formatName(author) }}</a>
+                        </div>
                         <span class="whitespace-nowrap" v-if="item.document.content.additionals.author_birth_year || item.document.content.additionals.author_death_year">
                             ({{ item.document.content.additionals.author_birth_year }}—{{ item.document.content.additionals.author_death_year}})
                         </span>
@@ -34,7 +36,11 @@
                             Výtvarný druh: {{ item.document.content.work_type }}<br>
                         </template>
                         <template v-if="item.document.content.topic">
-                            Námět: {{ item.document.content.topic.join(', ') }}<br>
+                            Námět:
+                            <template v-for="(topic, index) in item.document.content.topic">
+                                <a class="hover:underline" :href="`/katalog#/?filter[topic]=${encodeURIComponent(topic)}`">{{ topic }}</a>
+                                <template v-if="index + 1 < item.document.content.topic.length">,</template>
+                            </template><br>
                         </template>
                         <template v-if="item.document.content.medium">
                             Materiál: {{ item.document.content.medium }}<br>

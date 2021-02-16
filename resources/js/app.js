@@ -51,7 +51,9 @@ const common = {
             return name.replace(/^([^,]*),\s*(.*)$/, '$2 $1');
         };
         vue.prototype.getAuthor = item => {
-            return vue.prototype.formatName(item.document.content.author.join(', '));
+            return item.document.content.author.map(author => {
+                return vue.prototype.formatName(author);
+            }).join(', ');
         };
         vue.prototype.debounceScroll = _.debounce(() => {
             const id = window.location.hash.substring(1);
