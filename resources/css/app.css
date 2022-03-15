@@ -35,6 +35,7 @@
 
     html {
         scroll-behavior: smooth;
+        word-break: keep-all;
     }
 
     .text-content a {
