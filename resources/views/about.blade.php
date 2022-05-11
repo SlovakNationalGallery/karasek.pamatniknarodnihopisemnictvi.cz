@@ -7,8 +7,7 @@
         <h2 class="py-4 lg:py-8 underline">O výstavě</h2>
 
         <div class="mb-8 max-w-2xl mx-auto text-content text-center">
-            <p>Autoři a kurátoři: Barbora Vlášková, Jan Bouček</p>
-            <p>Odborný poradce: Vilma Hubáčková</p>
+            <p>Autoři a kurátoři: Vilma Hubáčková, Barbora Vlášková, Bronislava Kuzica Rokytová, Jan Bouček, Jakub Hauser</p>
             <p>Layout a grafický design: Jaroslav Tvrdoň, lab.SNG</p>
             <p>Audiovizuální vzdělávací materiály: Kateřina Švejdová, Zuzana Dvorská Šípová, Jindřich Čížek, Petr Gal</p>
             <p>Propagace: Aneta Křižková</p>
