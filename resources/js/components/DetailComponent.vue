@@ -29,23 +29,23 @@
                         <template v-if="item.document.content.dating">
                             Datace: {{ item.document.content.dating }}<br>
                         </template>
-                        <template v-if="item.document.content.measurement">
+                        <template v-if="item.document.content.measurement.length">
                             Rozměry: {{ item.document.content.measurement.join(', ') }}<br>
                         </template>
-                        <template v-if="item.document.content.work_type">
-                            Výtvarný druh: {{ item.document.content.work_type }}<br>
+                        <template v-if="item.document.content.work_type.length">
+                            Výtvarný druh: {{ item.document.content.work_type.join(', ') }}<br>
                         </template>
                         <template v-if="item.document.content.topic">
                             Námět:
                             <template v-for="(topic, index) in item.document.content.topic">
-                                <a class="hover:underline" :href="`/katalog#/?filter[topic]=${encodeURIComponent(topic)}`">{{ topic }}</a>
+                                <a class="hover:underline" :href="`/katalog#/?filter[topic]=${encodeURIComponent(topic)}`" :key="index">{{ topic }}</a>
                                 <template v-if="index + 1 < item.document.content.topic.length">,</template>
                             </template><br>
                         </template>
-                        <template v-if="item.document.content.medium">
-                            Materiál: {{ item.document.content.medium }}<br>
+                        <template v-if="item.document.content.medium.length">
+                            Materiál: {{ item.document.content.medium.join(', ') }}<br>
                         </template>
-                        <template v-if="item.document.content.technique">
+                        <template v-if="item.document.content.technique.length">
                             Technika: {{ item.document.content.technique.join(', ') }}<br>
                         </template>
                         <template v-if="item.document.content.identifier">
