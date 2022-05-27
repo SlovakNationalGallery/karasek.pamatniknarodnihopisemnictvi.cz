@@ -2,6 +2,7 @@
 @import "~vue-slider-component/dist-css/vue-slider-component.css";
 @import "~vue-slider-component/theme/default.css";
 @import '~vue-select/dist/vue-select.css';
+@import "~flickity/css/flickity.css";
 
 @tailwind base;
 @tailwind components;

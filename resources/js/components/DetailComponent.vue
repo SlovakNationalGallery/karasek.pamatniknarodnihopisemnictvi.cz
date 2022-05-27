@@ -4,20 +4,34 @@
             <div class="lg:flex lg:-mx-8 -my-8 lg:my-0 relative">
                 <div class="my-8 lg:my-0 lg:mx-8 relative lg:w-1/2">
                     <a :href="getZoomUrl(item)" class="group">
-                        <span class="absolute bg-black leading-none right-5 opacity-60 group-hover:opacity-100 p-2 rounded-full top-5 z-10">
+                        <span
+                            class="absolute bg-black leading-none right-5 opacity-60 group-hover:opacity-100 p-2 rounded-full top-5 z-10">
                             <i class="fa fa-search-plus text-white"></i>
                         </span>
-                        <img class="mx-auto" :src="getImage(item, 800)">
+                        <img class="mx-auto" :src="previewImageUrls[imageIndex]">
                     </a>
+                    <Flickity v-if="carouselImageUrls.length > 1" class="mt-12 list-disc" :options="{
+                        contain: true, imagesLoaded: true, pageDots: false, prevNextButtons: false
+                    }" @change="(index) => imageIndex = index" v-slot="{ selectedIndex, select }">
+
+                        <img v-for="src, index in carouselImageUrls" :key="src" :src="src"
+                            :class='["h-24 ml-2 first:ml-0 p-2 m-2 border border-black", selectedIndex === index ? "border-opacity-100" : "border-opacity-0 hover:border-opacity-10"]'
+                            @click="select(index)" />
+
+                    </Flickity>
                 </div>
                 <div class="my-8 lg:my-0 lg:w-1/2 lg:mx-8">
                     <hr class="border-black border-t-0.5">
 
                     <h2 class="leading-tight py-4 text-xl lg:text-2xl">
-                        <a class="hover:underline" :href="`/katalog#/?filter[author]=${encodeURIComponent(item.document.content.author[0])}`">
+                        <a class="hover:underline"
+                            :href="`/katalog#/?filter[author]=${encodeURIComponent(item.document.content.author[0])}`">
                             {{ formatName(item.document.content.author[0]) }}
-                            <span class="whitespace-nowrap" v-if="item.document.content.additionals.author_birth_year || item.document.content.additionals.author_death_year">
-                                ({{ item.document.content.additionals.author_birth_year }}—{{ item.document.content.additionals.author_death_year}})
+                            <span class="whitespace-nowrap"
+                                v-if="item.document.content.additionals.author_birth_year || item.document.content.additionals.author_death_year">
+                                ({{ item.document.content.additionals.author_birth_year }}—{{
+                                        item.document.content.additionals.author_death_year
+                                }})
                             </span>
                         </a>
                     </h2>
@@ -38,7 +52,10 @@
                         <template v-if="item.document.content.topic">
                             Námět:
                             <template v-for="(topic, index) in item.document.content.topic">
-                                <a class="hover:underline" :href="`/katalog#/?filter[topic]=${encodeURIComponent(topic)}`" :key="index">{{ topic }}</a>
+                                <a class="hover:underline"
+                                    :href="`/katalog#/?filter[topic]=${encodeURIComponent(topic)}`" :key="index">{{
+                                            topic
+                                    }}</a>
                                 <template v-if="index + 1 < item.document.content.topic.length">,</template>
                             </template><br>
                         </template>
@@ -69,13 +86,17 @@
 
 <script>
 import { apiMixin } from '../mixins';
+import Flickity from './Flickity';
 
 export default {
     mixins: [apiMixin],
 
+    components: { Flickity },
+
     data() {
         return {
             item: null,
+            imageIndex: 0,
             previous: null,
             next: null,
             back: null,
@@ -86,7 +107,7 @@ export default {
 
     created() {
         this.fetchItem(this.id)
-            .then(({data}) => {
+            .then(({ data }) => {
                 this.item = data;
 
                 if (this.fromCatalog) {
@@ -108,7 +129,7 @@ export default {
                 prevParams.append('filter[additionals.order][lt]', order);
                 prevParams.append('sort[additionals.order]', 'desc');
                 this.fetchItems(prevParams)
-                    .then(({data}) => {
+                    .then(({ data }) => {
                         if (data.data[0]) {
                             this.previous = this.getDetailUrl(data.data[0]);
 
@@ -124,7 +145,7 @@ export default {
                 nextParams.append('filter[additionals.order][gt]', order);
                 nextParams.append('sort[additionals.order]', 'asc');
                 this.fetchItems(nextParams)
-                    .then(({data}) => {
+                    .then(({ data }) => {
                         if (data.data[0]) {
                             this.next = this.getDetailUrl(data.data[0]);
 
@@ -137,21 +158,32 @@ export default {
                     });
 
                 if (category) {
-                    this.fetchCollections(new URLSearchParams({category}))
-                        .then(({data}) => {
+                    this.fetchCollections(new URLSearchParams({ category }))
+                        .then(({ data }) => {
                             if (data.data[0]) {
                                 this.back = this.getCollectionUrl(data.data[0]);
                             }
                         });
                 } else {
-                    this.fetchArticles(new URLSearchParams({set}))
-                        .then(({data}) => {
+                    this.fetchArticles(new URLSearchParams({ set }))
+                        .then(({ data }) => {
                             if (data.data[0]) {
                                 this.back = this.getArticleUrl(data.data[0]);
                             }
                         })
                 }
             });
+
+    },
+    computed: {
+        carouselImageUrls() {
+            if (!this.item) return []
+            return this.item.document.content.images.map(i => `https://img.webumenia.sk/zoom/?path=${i}_files/0/0_0.jpg`)
+        },
+        previewImageUrls() {
+            if (!this.item) return []
+            return this.item.document.content.images.map(i => `https://img.webumenia.sk/preview/?path=${i}&size=800`)
+        }
     }
 }
 </script>
