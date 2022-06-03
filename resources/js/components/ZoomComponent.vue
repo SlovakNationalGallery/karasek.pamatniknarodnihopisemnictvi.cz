@@ -98,6 +98,8 @@ export default {
                 this.page = page
             });
 
+            this.viewer.addHandler('pan',this.resetControlsAutoHideTimerThrottled);
+
             this.viewer.canvas.addEventListener('contextmenu', e => {
                 e.preventDefault();
             });
