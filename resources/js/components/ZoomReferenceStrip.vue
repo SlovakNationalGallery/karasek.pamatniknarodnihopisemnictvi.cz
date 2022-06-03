@@ -1,8 +1,6 @@
 <template>
-    <div class="overflow-y-scroll p-2" v-dragscroll>
-        <div v-for="src, index in thumbnailUrls" :key="src">
-            <slot name="tile" v-bind:src="src" v-bind:index="index" />
-        </div>
+    <div v-dragscroll>
+        <slot v-bind:thumbnailUrls="thumbnailUrls" />
     </div>
 </template>
 
