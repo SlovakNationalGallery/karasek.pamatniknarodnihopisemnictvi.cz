@@ -17,7 +17,7 @@
                 </div>
 
                 <ReferenceStrip
-                    class="absolute inset-x-0 bottom-0 md:inset-x-auto md:bottom-auto md:inset-y-0 md:right-0 bg-white bg-opacity-60 overflow-auto p-4 h-28 md:h-full flex flex-shrink-0 md:flex-col"
+                    class="absolute inset-x-0 bottom-0 md:inset-x-auto md:bottom-auto md:inset-y-0 md:right-0 bg-white bg-opacity-60 overflow-auto p-2 md:p-4 h-28 md:h-full flex flex-shrink-0 md:flex-col"
                     :tile-sources="tileSources" v-slot="{ thumbnailUrls }">
                     <img v-for="src, index in thumbnailUrls" :key="src" :src="src"
                         :class='["h-full md:h-auto md:w-40 md:mt-2 p-2 border cursor-pointer border-black", page === index ? "border-opacity-100" : "border-opacity-0 hover:border-opacity-10"]'
