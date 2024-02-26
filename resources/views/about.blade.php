@@ -11,7 +11,7 @@
             <p>Layout a grafický design: Jaroslav Tvrdoň, lab.SNG</p>
             <p>Audiovizuální vzdělávací materiály: Kateřina Švejdová, Zuzana Dvorská Šípová, Jindřich Čížek, Petr Gal</p>
             <p>Propagace: Aneta Křižková</p>
-            <p>Fotografie a skenování: Filip Beránek, Miroslav Lisner</p>
+            <p>Fotografie a skenování: Filip Beránek, Ondřej Přibyl, Miroslav Lisner, Viktor Vaniš, Radka Procházková</p>
             <p>Technická realizace: lab.SNG</p>
         </div>
 
