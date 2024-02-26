@@ -101,6 +101,7 @@ return [
         'http_user' => 'www-data',
         'bin/php' => 'php7.4',
         'bin/composer' => 'php7.4 $(which composer)',
+        'bin/npm' => 'n exec 16 npm',
         'php_fpm_service' => 'php7.4-fpm',
         'shared_dirs' => [
             'public/packages',
