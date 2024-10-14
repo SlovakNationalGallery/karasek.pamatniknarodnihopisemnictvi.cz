@@ -10,7 +10,7 @@
             @foreach($menu as $slug => $title)
                 <a class="block md:inline-block font-medium leading-normal my-4 md:mx-2 md:my-1 underline hover:no-underline uppercase" href="{{ route('article', ['article' => $slug]) }}">{{ $title }}</a>
             @endforeach
-            <a class="block md:inline-block font-medium leading-normal my-4 md:mx-2 md:my-1 underline hover:no-underline uppercase" href="{{ route('catalog') }}">Katalog výstavy</a>
+            <a class="block md:inline-block font-medium leading-normal my-4 md:mx-2 md:my-1 underline hover:no-underline uppercase" href="{{ route('catalog') }}">Katalog</a>
         </div>
     </div>
 @endsection
