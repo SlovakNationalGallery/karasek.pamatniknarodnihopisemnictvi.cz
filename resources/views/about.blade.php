@@ -4,7 +4,7 @@
     @parent
 
     <div class="max-w-4xl mx-auto -mt-28 mb-32 lg:mt-0 lg:mb-0">
-        <h2 class="py-4 lg:py-8 underline">O výstavě</h2>
+        <h2 class="py-4 lg:py-8 underline">O projektu</h2>
 
         <div class="mb-8 max-w-2xl mx-auto text-content text-center">
             <p>Autoři a kurátoři: Vilma Hubáčková, Barbora Vlášková, Bronislava Kuzica Rokytová, Jan Bouček, Jakub Hauser</p>

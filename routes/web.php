@@ -35,8 +35,12 @@ Route::get('katalog', function () {
     return view('catalog');
 })->name('catalog');
 
+Route::get('o-vystave', function () {
+    return redirect(route('article', 'o-projektu'));
+});
+
 Route::get('{article:slug}', function (\App\Models\Article $article) {
-    $template = $article->slug === 'o-vystave' ? 'about' : 'article';
+    $template = $article->slug === 'o-projektu' ? 'about' : 'article';
     return view($template, compact('article'));
 })->name('article');
 
